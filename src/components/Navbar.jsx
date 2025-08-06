@@ -14,7 +14,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md px-4 py-3 flex justify-between items-center">
+  <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md px-4 py-3 flex justify-between items-center transition duration-300">
       {/* Logo */}
       <div className="flex items-center space-x-2">
         <span className="text-2xl font-bold text-black flex items-center">
