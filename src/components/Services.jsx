@@ -20,7 +20,11 @@ const Services = () => {
           >
             {/* Image Placeholder */}
             <div className="bg-gray-300 w-full h-40 rounded-md mb-4 flex items-center justify-center text-gray-600 text-sm">
-              Image Placeholder
+                <img
+            src={"/serv.png"}
+            alt="WebVision Illustration"
+           className="max-h-40 w-full object-contain mb-4"
+          />
             </div>
 
             <h3 className="text-lg font-semibold mb-2 capitalize">

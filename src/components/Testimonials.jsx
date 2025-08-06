@@ -41,7 +41,13 @@ const Testimonials = () => {
             <p className="mb-6 text-sm text-gray-800">{t.text}</p>
             <div className="flex items-center mt-auto">
               {/* Placeholder Avatar */}
-              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3"></div>
+              <div className="w-10 h-10 rounded-full bg-gray-300 mr-3">
+                <img
+            src={"/test.png"}
+            alt="WebVision Illustration"
+           className="max-h-40 w-full object-contain mb-4"
+          />
+              </div>
               <div>
                 <p className="font-semibold text-sm">{t.name}</p>
                 <p className="text-xs text-gray-600">{t.role}</p>

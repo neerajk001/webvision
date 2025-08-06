@@ -7,7 +7,11 @@ const Hero = () => {
         
         {/* Left: Image Placeholder */}
         <div className="flex-1 bg-gray-300 h-64 w-full rounded-lg flex items-center justify-center text-gray-600 text-sm">
-          Image Placeholder
+         <img
+            src={"/program.png"}
+            alt="WebVision Illustration"
+            className="w-full h-auto"
+          />
         </div>
 
         {/* Right: Text Content */}

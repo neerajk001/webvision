@@ -31,7 +31,11 @@ const TeamSection = () => {
             >
               {/* Placeholder avatar */}
               <div className="w-32 h-32 rounded-full bg-gray-300 mb-4 border-1 border-black">
-                {/* Replace with actual <img src={...} /> or Avatar component */}
+                <img
+            src={"/pp.jpg"}
+            alt="WebVision Illustration"
+           className="max-h-40 w-full object-contain mb-4 border "
+          />
               </div>
               <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-medium mb-2">
                 {member.name}
