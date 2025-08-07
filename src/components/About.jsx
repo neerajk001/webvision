@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AboutUs = () => {
+const Aboutus = () => {
   const cardText =
     'We provide our clients with the exact tailor-made software solutions that will meet their specific business requirements. Our team of experienced and technical software developers will integrate application development with your line of business.';
 
@@ -47,4 +47,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Aboutus;
