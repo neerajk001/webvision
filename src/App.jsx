@@ -17,6 +17,7 @@ import OurProducts from './pages/OurProducts';
 import OurClients from './pages/OurClients';
 import Contact from './pages/Contact';
 import ScrollPanel from './components/ScrollPanel';
+import Demo from './pages/Demo';
 
 const Home = () => {
   return (
@@ -45,6 +46,8 @@ const App = () => {
           <Route path="/product" element={<OurProducts />} />
           <Route path="/client" element={<OurClients />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/demo" element={<Demo/>} />
+
         </Routes>
       </main>
       <Footer />
