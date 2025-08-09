@@ -1,58 +1,43 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react'; // Removed useState since it's no longer needed
+import { motion } from 'framer-motion'; // Removed AnimatePresence
 
-// --- Mock Data for Clients ---
-// In a real app, you'd fetch this from a CMS or API.
-// Using placeholder logos for demonstration.
+// --- Client Data ---
 const clients = [
-    { name: "RAHY", info: "Leading logistics and transport solutions.", logo: "https://placehold.co/200x100/000000/FFFFFF?text=RAHY" },
-    { name: "GV WALA TEH", info: "Premium organic tea and beverage supplier.", logo: "https://placehold.co/200x100/4ade80/000000?text=GV+WALA+TEH" },
-    { name: "Bob's Banter Academy", info: "Building the next generation of public speakers.", logo: "https://placehold.co/200x100/3b82f6/FFFFFF?text=BBA" },
-    { name: "Tata Speed", info: "Automotive performance and parts specialist.", logo: "https://placehold.co/200x100/ef4444/FFFFFF?text=TATA+SPEED" },
-    { name: "Yarave", info: "Innovative fashion and apparel brand.", logo: "https://placehold.co/200x100/8b5cf6/FFFFFF?text=YARAVE" },
-    { name: "S.S. Lubricants", info: "High-performance industrial lubricants.", logo: "https://placehold.co/200x100/0ea5e9/FFFFFF?text=S.S.L" },
-    { name: "We Can Services", info: "Comprehensive home and business maintenance.", logo: "https://placehold.co/200x100/14b8a6/FFFFFF?text=We+Can" },
-    { name: "Airo-tech Enterprises", info: "Cutting-edge aerospace technology.", logo: "https://placehold.co/200x100/f97316/FFFFFF?text=Airo-tech" },
-    { name: "Glisten Group", info: "Financial consulting and investment services.", logo: "https://placehold.co/200x100/facc15/000000?text=Glisten" },
-    { name: "Giriji Tech", info: "Engineering and technology solutions provider.", logo: "https://placehold.co/200x100/64748b/FFFFFF?text=GIRIJI" },
-    { name: "Vruddhi Financial", info: "Personal and business financial planning.", logo: "https://placehold.co/200x100/22c55e/FFFFFF?text=VRUDDHI" },
-    { name: "Naturez Fresh", info: "Farm-to-table organic produce delivery.", logo: "https://placehold.co/200x100/84cc16/000000?text=Naturez+Fresh" },
+    { name: "Airo-tech", info: "Cutting-edge aerospace technology.", logo: "/clients/airotech.jpg" },
+    { name: "Balchitrakal", info: "Creative arts and cultural organization.", logo: "/clients/balchitrakal.jpg" },
+    { name: "BBA", info: "Building the next generation of public speakers.", logo: "/clients/bba.jpg" },
+    { name: "Giriji", info: "Engineering and technology solutions provider.", logo: "/clients/giriji.jpg" },
+    { name: "Gleen Steen", info: "High-performance industrial solutions.", logo: "/clients/gleen-steen.jpg" },
+    { name: "GV Wala", info: "Premium organic tea and beverage supplier.", logo: "/clients/gvwala.jpg" },
+    { name: "Maharashtra Kung Fu", info: "Martial arts training and federation.", logo: "/clients/maharstra-kungfu.jpg" },
+    { name: "MFV", info: "Innovative business solutions.", logo: "/clients/mfv.jpg" },
+    { name: "MK Enterprises", info: "Diversified business enterprises.", logo: "/clients/mkenterprises.jpg" },
+    { name: "Naturez Freshz", info: "Farm-to-table organic produce delivery.", logo: "/clients/naturefreshz.jpg" },
+    { name: "Patna", info: "Regional development and services.", logo: "/clients/patna.jpg" },
+    { name: "RAHY", info: "Leading logistics and transport solutions.", logo: "/clients/rahy.jpg" },
+    { name: "Tata Speed", info: "Automotive performance and parts specialist.", logo: "/clients/tata-speed.jpg" },
+    { name: "Vruddhi", info: "Personal and business financial planning.", logo: "/clients/vrudhi.jpg" },
+    { name: "We Can Services", info: "Comprehensive home and business maintenance.", logo: "/clients/we-can-services.jpg" },
+    { name: "Web Vision Softech", info: "Web development solutions in Vasai.", logo: "/clients/web-development-vasai-web-vision-softech.jpg" },
 ];
+
 
 // --- Components ---
 
 /**
- * ClientCard Component
- * Displays a single client logo and shows info on hover.
+ * ClientCard Component (Simplified)
+ * Displays only the client logo without any hover effects.
  */
 const ClientCard = ({ client }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
     return (
         <motion.div
-            className="relative flex items-center justify-center p-6 bg-white rounded-lg shadow-md h-32"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md h-32"
             variants={{
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
             }}
         >
-            <img src={client.logo} alt={`${client.name} logo`} className="max-h-16 w-auto" />
-
-            <AnimatePresence>
-                {isHovered && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0 bg-black/70 backdrop-blur-sm rounded-lg flex items-center justify-center p-4"
-                    >
-                        <p className="text-white text-center font-semibold">{client.info}</p>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <img src={client.logo} alt={`${client.name} logo`} className="max-h-20 w-auto object-contain" />
         </motion.div>
     );
 };
@@ -100,7 +85,7 @@ const OurClients = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1,
+                staggerChildren: 0.05,
             },
         },
     };
@@ -125,7 +110,7 @@ const OurClients = () => {
 
                 {/* Client Grid */}
                 <motion.div
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -143,4 +128,4 @@ const OurClients = () => {
     );
 };
 
-export default OurClients
+export default OurClients;
