@@ -16,6 +16,7 @@ import Portfolio from './pages/OurPortfolioItems';
 import OurProducts from './pages/OurProducts';
 import OurClients from './pages/OurClients';
 import Contact from './pages/Contact';
+import ScrollPanel from './components/ScrollPanel';
 
 const Home = () => {
   return (
@@ -33,6 +34,7 @@ const Home = () => {
 const App = () => {
   return (
     <Router>
+      <ScrollPanel/>
       <Navbar />
       <main>
         <Routes>
