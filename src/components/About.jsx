@@ -34,7 +34,7 @@ const Aboutus = () => {
 
           {/* Buttons */}
           <div className="mt-6 flex gap-4 flex-wrap">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2 rounded shadow">
+            <button className="bg-[#8BC4EC] hover:bg-blue-500 text-white font-semibold px-6 py-2 rounded shadow">
               Read More
             </button>
             <button className="border border-black text-black font-semibold px-6 py-2 rounded shadow hover:bg-gray-200">

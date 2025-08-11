@@ -19,7 +19,7 @@ const Navbar = () => {
   ];
 
   const handleNavigation = (path) => {
-    setIsOpen(false); // Close mobile menu
+    setIsOpen(false);
     if (location.pathname !== path) {
       navigate(path);
     }
@@ -30,20 +30,25 @@ const Navbar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md px-4 py-3 flex justify-between items-center transition duration-300"
+      // --- CHANGE 1: Give the navbar a FIXED HEIGHT and standard padding ---
+      // h-16 (4rem or 64px) sets a consistent height.
+      // The logo will now overflow this height.
+      className="sticky top-0 z-50 h-16 bg-white/80 backdrop-blur-lg shadow-md px-6 flex justify-between items-center transition duration-300"
     >
       {/* Logo */}
-      <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleNavigation('/')}>
-        <span className="text-2xl font-bold text-black flex items-center">
-          <span className="text-3xl font-extrabold text-black">V</span>
-          <div className="ml-2">
-            <p className="text-xl font-semibold">WebVision</p>
-            <p className="text-xs text-gray-500 -mt-1">Infotech Pvt Limited</p>
-          </div>
-        </span>
+      {/* --- CHANGE 2: The logo wrapper is back to being a simple flex item --- */}
+      <div className="cursor-pointer" onClick={() => handleNavigation('/')}>
+        <img
+          // --- CHANGE 3: Make the logo TALLER than the navbar's height ---
+          // h-24 (6rem or 96px) is taller than the nav's h-16.
+          // You can adjust this value freely.
+          className="h-18 w-auto" 
+          src="/image.png"
+          alt="Company Logo" 
+        />
       </div>
 
-      {/* Desktop Menu */}
+      {/* Desktop Menu (No changes needed) */}
       <div className="hidden md:flex space-x-3">
         {navLinks.map((link, index) => (
           <motion.button
@@ -62,14 +67,14 @@ const Navbar = () => {
         ))}
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button (No changes needed, now works correctly) */}
       <div className="md:hidden">
         <button onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile Dropdown (Positioned relative to the fixed-height navbar) */}
       {isOpen && (
         <motion.div
           initial={{ y: -10, opacity: 0 }}

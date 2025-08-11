@@ -10,14 +10,14 @@ const Hero = () => {
          <img
             src={"/program.png"}
             alt="WebVision Illustration"
-            className="w-full h-auto"
+            className="w-full h-auto object-contain"
           />
         </div>
 
         {/* Right: Text Content */}
         <div className="flex-1">
           <h1 className="text-3xl md:text-4xl font-extrabold text-black leading-snug">
-            WELCOME TO WEBVISION <br /> INFOTECH PVT LTD.
+            WELCOME TO WEBVISION <br /> SOFTECH PVT LTD.
           </h1>
 
           <p className="text-xl text-purple-600 font-semibold mt-4">
@@ -32,12 +32,10 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="mt-6 flex gap-4 flex-wrap">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded shadow">
+            <button className="bg-[#8BC4EC] hover:bg-blue-500  text-white font-semibold px-6 py-2 rounded shadow">
               Get started
             </button>
-            <button className="bg-black text-white font-semibold px-6 py-2 rounded shadow hover:bg-gray-800">
-              our services
-            </button>
+            
           </div>
         </div>
       </div>

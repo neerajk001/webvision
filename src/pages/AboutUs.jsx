@@ -78,7 +78,7 @@ const AboutUs = () => (
                         variants={childVariants}
                     >
                         <motion.button
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-colors duration-300 flex items-center group"
+                            className="bg-[#8BC4EC] hover:bg-blue-500 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-colors duration-300 flex items-center group"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
