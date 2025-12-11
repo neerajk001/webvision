@@ -43,8 +43,8 @@ const services = [
   description: "Grow your brand presence and engage your audience across all major social media platforms.",
   icon: <Share2 size={32} />
 },
-];
-
+];  
+//this is commented out code for reference only
 /**
  * OurService Component
  * Displays a grid of service cards with minimal, clean animations.
