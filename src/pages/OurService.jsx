@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Layers, AppWindow, Users, Briefcase, Database } from 'lucide-react';
+import { Code, Layers, AppWindow, Users, Briefcase, Database , Share2} from 'lucide-react';
 
 // Service data with corresponding icons for better visual representation
 const services = [
@@ -33,7 +33,16 @@ const services = [
     name: "ERP & CRM Solution", 
     description: "Powerful and scalable ERP & CRM systems to manage your resources and customer relationships effectively.",
     icon: <Database size={32} /> 
+  }, {
+    name: "SEO Optimization", 
+    description: " Boost your website’s visibility and rank higher on search engines with our advanced SEO strategies.",
+    icon: <Briefcase size={32} /> 
   },
+{
+  name: "Social Media Marketing",
+  description: "Grow your brand presence and engage your audience across all major social media platforms.",
+  icon: <Share2 size={32} />
+},
 ];
 
 /**
