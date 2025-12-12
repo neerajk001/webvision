@@ -23,8 +23,8 @@ const pricingPlans = [
             "5 Core Web Vitals Fixes",
             "Monthly Local Ranking Report",
         ],
-        accent: "text-gray-500",
-        shadow: "shadow-gray-300"
+        accent: "text-blue-500",
+        shadow: "shadow-blue-300"
     },
     {
         icon: Zap,
@@ -37,8 +37,8 @@ const pricingPlans = [
             "Content Strategy & Keyword Mapping",
             "Monthly Backlink Outreach (4 Links)",
         ],
-        accent: "text-[#FF8C00]", // Vibrant Orange Accent
-        shadow: "shadow-[#FF8C00]/50" // Orange Shadow for Highlight
+        accent: "text-[#3B82F6]", 
+        shadow: "shadow-[#3B82F6]/50" 
     },
     {
         icon: DollarSign,
@@ -95,10 +95,10 @@ const ImageBannerSection = () => (
         whileHover={{ scale: 1.01 }}
     >
         <img 
-            src="\public\images\native-banner.avif" 
+            src="/images/native-banner.avif" 
             alt="Image Description"
             // Image: Ensure it covers the new aspect ratio size
-            className="w-full h-full object-cover rounded-xl shadow-2xl border-4 border-[#FF8C00]/50"
+            className="w-full h-full object-cover rounded-xl shadow-2xl border-0 border-[]/50"
         />
     </motion.div>
 </motion.section>
@@ -119,7 +119,7 @@ const PricingSection = () => (
     >
         <div className="max-w-7xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-4 text-center">
-                Our Transparent <span className="text-[#FF8C00]">Service Charges</span>
+                Our Transparent <span className="text-[#3B82F6]">Service Charges</span>
             </h2>
             <p className="text-xl text-gray-500 mb-16 text-center max-w-3xl mx-auto">
                 Pricing is structured monthly based on the required depth of technical work and competitive landscape in Mumbai.
@@ -164,7 +164,7 @@ const PricingSection = () => (
                             <a 
                                 href="#contact-form" 
                                 className={`block w-full text-center py-3 rounded-lg font-semibold transition duration-300 
-                                            ${plan.accent.includes('#FF8C00') ? 'bg-[#FF8C00] text-white hover:bg-orange-600' : 'bg-gray-200 text-[#1F2937] hover:bg-gray-300'}`}
+                                            ${plan.accent.includes('#FF8C00') ? 'bg-[#3B82F6] text-white hover:blue-500' : 'bg-gray-200 text-[#1F2937] hover:bg-blue-500'}`}
                             >
                                 Select Plan
                             </a>
@@ -198,14 +198,14 @@ const HeroSection = () => (
                     Your Digital Growth Engine
                 </h2>
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-[#1F2937]">
-                    Mastering Search: From <span className="text-[#FF8C00]">Code to Conversions</span>
+                    Mastering Search: From <span className="text-[#3B82F6]">Code to Conversions</span>
                 </h1>
                 <p className="text-lg text-gray-600">
                     We specialize in technical SEO that aligns perfectly with modern search algorithms. Our strategies cover mobile responsiveness, Core Web Vitals, and semantic markup to build long-term authority.
                 </p>
                 <motion.a 
                     href="#card-grid"
-                    className="inline-block mt-4 px-6 py-3 bg-[#FF8C00] text-white font-semibold rounded-lg shadow-md"
+                    className="inline-block mt-4 px-6 py-3 bg-[#3B82F6] text-white font-semibold rounded-lg shadow-md"
                     whileHover={{ scale: 1.05, boxShadow: "0px 5px 10px rgba(255, 140, 0, 0.4)" }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -224,9 +224,9 @@ const HeroSection = () => (
                 {/* The path should start from the root (public folder) and use forward slashes / */}
                 <div className="w-full max-w-lg h-full flex items-center justify-center">
                     <img 
-                        src="\public\images\seomastering.png" // Corrected path to start from public folder
+                        src="/images/seomastering.png" // Corrected path to start from public folder
                         alt="SEO strategy illustration on laptop and mobile"
-                        className="w-full h-full rounded-xl shadow-2xl border-4 border-[#FF8C00]"
+                        className="w-full h-full rounded-xl shadow-2xl border-4 border-[#3B82F6]"
                     /> 
                 </div>
             </motion.div>
@@ -270,7 +270,7 @@ const ContentImageSection = () => (
                 variants={itemVariants}
             >
                 <h3 className="text-4xl font-extrabold text-[#1F2937]">
-                    Technical Audit & <span className="text-[#FF8C00]">Performance Fixes</span>
+                    Technical Audit & <span className="text-[#3B82F6]">Performance Fixes</span>
                 </h3>
                 <p className="text-lg text-gray-600">
                     We start with a comprehensive audit of your site's codebase and architecture. This ensures search engines can efficiently crawl, index, and rank your content without technical barriers.
@@ -295,7 +295,7 @@ const PillarCard = ({ icon: Icon, title, description }) => (
         whileHover={{ scale: 1.05, y: -5, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
         transition={{ type: "spring", stiffness: 300 }}
     >
-        <Icon className="w-10 h-10 mb-3 text-[#FF8C00]" />
+        <Icon className="w-10 h-10 mb-3 text-[#3B82F6]" />
         <h4 className="text-xl font-bold mb-2 text-[#1F2937]">{title}</h4>
         <p className="text-sm text-gray-500">{description}</p>
     </motion.div>
@@ -324,7 +324,7 @@ const CardGridSection = () => {
         >
             <div className="max-w-7xl mx-auto">
                 <motion.h2 className="text-4xl font-extrabold text-[#1F2937] mb-12 text-center" variants={itemVariants}>
-                    The 8 Pillars of <span className="text-[#FF8C00]">Digital Authority</span>
+                    The 8 Pillars of <span className="text-[#3B82F6]">Digital Authority</span>
                 </motion.h2>
                 
                 <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" variants={containerVariants}>
@@ -372,8 +372,8 @@ const SeoPage = () => {
                     <motion.a 
                         href="mailto:webvisionsoftech@gmail.com?subject=SEO%20Service%20Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20SEO%20and%20Mobile%20Development%20services.%20My%20name%20is%20..." 
                         
-                        className="inline-block px-8 py-4 text-xl font-bold rounded-full text-white bg-[#FF8C00] 
-                                transition duration-300 hover:bg-orange-600 shadow-lg"
+                        className="inline-block px-8 py-4 text-xl font-bold rounded-full text-white bg-[#3B82F6] 
+                                transition duration-300 hover:bg-500 shadow-lg"
                         
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

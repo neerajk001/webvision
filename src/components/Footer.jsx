@@ -12,7 +12,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img src="/public/image.png" alt="footer logo" className='w-20 md:w-32 lg:w-48'/>
+          <img src="/image.png" alt="footer logo" className='w-20 md:w-32 lg:w-48'/>
           <h2 className="text-xl font-semibold mb-4">Webvision Softech</h2>
           <p className="text-sm leading-relaxed">
             Webvision Softech is a “One Stop IT Solution” for any kind of business process. We deal with web & window’s application services located in Mumbai, India.
