@@ -16,7 +16,6 @@ const pricingPlans = [
         icon: Settings,
         title: "Proof of Concept (POC)",
         subtitle: "Focus: Idea Validation & Core Logic Testing",
-        price: "₹1,80,000", 
         features: [
             "Detailed Requirement Elicitation",
             "Functional Wireframes & Prototypes",
@@ -30,7 +29,6 @@ const pricingPlans = [
         icon: Zap,
         title: "Agile Development (Recommended)",
         subtitle: "Focus: Feature Development & Scalability",
-        price: "₹4,00,000+", // Example Price
         features: [
             "All POC features included",
             "Dedicated Full-Stack Team (3 members)",
@@ -44,7 +42,6 @@ const pricingPlans = [
         icon: Cloud,
         title: "Enterprise Platform",
         subtitle: "Focus: High Availability & Digital Transformation",
-        price: "Custom Quote",
         features: [
             "All Agile features included",
             "Managed DevOps & Cloud Infrastructure",
@@ -239,12 +236,9 @@ const PricingSection = () => (
         variants={containerVariants}
     >
         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-16 text-center">
                 Software Development <span className="text-[#3B82F6]">Engagement Models</span>
             </h2>
-            <p className="text-xl text-gray-500 mb-16 text-center max-w-3xl mx-auto">
-                We offer flexible, clear models based on project scope, team size, and the required level of infrastructure management.
-            </p>
 
             <motion.div 
                 className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -264,11 +258,7 @@ const PricingSection = () => (
                             <p className="text-sm text-gray-500 mt-1">{plan.subtitle}</p>
                         </div>
 
-                        {/* Price */}
-                        <div className="text-center mb-8 border-b pb-4">
-                            <p className="text-5xl font-extrabold text-[#1F2937]">{plan.price}</p>
-                            <p className="text-sm text-gray-500">starting investment (Fixed Cost/Monthly Retainer)</p>
-                        </div>
+
 
                         {/* Features List */}
                         <ul className="space-y-3 flex-grow">

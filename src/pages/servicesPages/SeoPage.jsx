@@ -42,7 +42,6 @@ const pricingPlans = [
         icon: Shield,
         title: "Local SEO Starter",
         subtitle: "Focus: Local Ranking & Visibility",
-        price: "₹20,000",
         features: [
             "Comprehensive Local Audit",
             "Google Business Profile Setup/Optimization",
@@ -56,7 +55,6 @@ const pricingPlans = [
         icon: Zap,
         title: "Growth Accelerator (Recommended)",
         subtitle: "Focus: National Growth & Technical SEO",
-        price: "35,000",
         features: [
             "All Starter features included",
             "Full Technical SEO Audit & Implementation",
@@ -70,7 +68,6 @@ const pricingPlans = [
         icon: DollarSign,
         title: "Enterprise E-commerce",
         subtitle: "Focus: High Volume & Global Authority",
-        price: "₹65,000+",
         features: [
             "All Growth features included",
             "Dedicated ASO & Mobile App Optimization",
@@ -124,12 +121,9 @@ const PricingSection = () => (
         variants={cardContainerVariants}
     >
         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-16 text-center">
                 Our Transparent <span className="text-[#3B82F6]">Service Charges</span>
             </h2>
-            <p className="text-xl text-gray-500 mb-16 text-center max-w-3xl mx-auto">
-                Pricing is structured monthly based on the required depth of technical work and competitive landscape in Mumbai.
-            </p>
 
             <motion.div 
                 className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -149,11 +143,7 @@ const PricingSection = () => (
                             <p className="text-sm text-gray-500 mt-1">{plan.subtitle}</p>
                         </div>
 
-                        {/* Price */}
-                        <div className="text-center mb-8 border-b pb-4">
-                            <p className="text-5xl font-extrabold text-[#1F2937]">{plan.price}</p>
-                            <p className="text-sm text-gray-500">per month (Billed Annually)</p>
-                        </div>
+
 
                         {/* Features List */}
                         <ul className="space-y-3 flex-grow">

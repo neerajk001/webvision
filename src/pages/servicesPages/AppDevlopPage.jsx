@@ -16,7 +16,6 @@ const pricingPlans = [
         icon: Smartphone,
         title: "MVP Launchpad",
         subtitle: "Focus: Core Functionality & Rapid Deployment",
-        price: "₹50,000", // Example Price
         features: [
             "Cross-Platform Flutter/React Native",
             "Core Feature Development (up to 5 screens)",
@@ -30,7 +29,6 @@ const pricingPlans = [
         icon: Zap,
         title: "Growth Scale (Recommended)",
         subtitle: "Focus: Feature Richness & User Experience",
-        price: "₹85,000+", // Example Price
         features: [
             "All Launchpad features included",
             "Advanced UI/UX Customization",
@@ -44,7 +42,6 @@ const pricingPlans = [
         icon: DollarSign,
         title: "Enterprise Ecosystem",
         subtitle: "Focus: High Traffic & Complex Systems",
-        price: "₹1,20,000+", 
         features: [
             "All Growth features included",
             "Dedicated Cloud Infrastructure (AWS/Azure)",
@@ -330,7 +327,6 @@ const PricingSection = () => (
 
                         {/* Price */}
                         <div className="text-center mb-8 border-b pb-4">
-                            <p className="text-5xl font-extrabold text-[#1F2937]">{plan.price}</p>
                             <p className="text-sm text-gray-500">starting investment</p>
                         </div>
 

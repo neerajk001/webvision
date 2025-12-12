@@ -16,7 +16,6 @@ const pricingPlans = [
         icon: Users,
         title: "Foundation Starter",
         subtitle: "Focus: Setup, Content Scheduling & Engagement",
-        price: "₹30,000", // Example Price
         features: [
             "2 Platform Setup/Optimization (FB/Insta)",
             "12 Posts/Reels Scheduled Monthly",
@@ -30,7 +29,6 @@ const pricingPlans = [
         icon: Target,
         title: "Growth Accelerator (Recommended)",
         subtitle: "Focus: Paid Ads, Lead Generation & Conversion",
-        price: "₹65,000+", // Example Price
         features: [
             "All Starter features included",
             "Dedicated Paid Campaign Strategy (₹ Ad Spend)",
@@ -44,7 +42,6 @@ const pricingPlans = [
         icon: DollarSign,
         title: "Enterprise Influencer",
         subtitle: "Focus: Full Funnel Management & Brand Authority",
-        price: "Custom Quote",
         features: [
             "All Growth features included",
             "Influencer/Creator Outreach Management",
@@ -309,12 +306,9 @@ const PricingSection = () => (
         variants={containerVariants}
     >
         <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1F2937] mb-16 text-center">
                 Social Media <span className="text-[#3B82F6]">Investment Packages</span>
             </h2>
-            <p className="text-xl text-gray-500 mb-16 text-center max-w-3xl mx-auto">
-                Our SMM packages are monthly agreements, customized based on ad spend, required content volume, and platform complexity.
-            </p>
 
             <motion.div 
                 className="grid grid-cols-1 md:grid-cols-3 gap-8"
@@ -334,11 +328,7 @@ const PricingSection = () => (
                             <p className="text-sm text-gray-500 mt-1">{plan.subtitle}</p>
                         </div>
 
-                        {/* Price */}
-                        <div className="text-center mb-8 border-b pb-4">
-                            <p className="text-5xl font-extrabold text-[#1F2937]">{plan.price}</p>
-                            <p className="text-sm text-gray-500">per month (Management Fee)</p>
-                        </div>
+
 
                         {/* Features List */}
                         <ul className="space-y-3 flex-grow">
