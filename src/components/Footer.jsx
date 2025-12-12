@@ -96,18 +96,26 @@ const Footer = () => {
           </div>
 
           {/* Social Icons */}
-          <div className="flex space-x-4 mt-6 text-white">
-            {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube].map((Icon, idx) => (
-              <motion.a
-                key={idx}
-                whileHover={{ scale: 1.2 }}
-                className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition"
-                href="#"
-              >
-                <Icon size={18} />
-              </motion.a>
-            ))}
-          </div>
+           <div className="flex space-x-4 mt-6 text-white">
+      {[
+        { icon: FaFacebookF, link: 'https://www.facebook.com/people/Webvision-Softech-Pvt-Ltd/100054232521328/' },
+        { icon: FaTwitter, link: 'https://twitter.com/yourprofile' },
+        { icon: FaInstagram, link: 'https://www.instagram.com/yourprofile' },
+        { icon: FaLinkedinIn, link: 'https://www.linkedin.com/in/yourprofile' },
+        { icon: FaYoutube, link: 'https://www.youtube.com/channel/yourchannel' }
+      ].map((social, idx) => (
+        <motion.a
+          key={idx}
+          whileHover={{ scale: 1.2 }}
+          className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition"
+          href={social.link}  // Use the real URL here
+          target="_blank"      // Opens the link in a new tab
+          rel="noopener noreferrer"  // Security best practice for external links
+        >
+          <social.icon size={18} />
+        </motion.a>
+      ))}
+    </div>
         </motion.div>
       </div>
 

@@ -12,13 +12,13 @@ const products = [
             "Fully Responsive Design",
             "Cross Browser Support",
         ],
-        image: "https://images.unsplash.com/photo-1526933996296-1c7c427c5a42?q=80&w=2070&auto=format&fit=crop",
+        image: "/images/app_analytics_dashboard.jpg",
         imageAlt: "Modern Point of Sale system in a boutique"
     },
     {
         title: "CRM Software",
         description: "Designed for small, mid-market, and enterprise organizations with a focus on sales and support. Our CRM offers vertical solutions for a wide variety of industry-specific needs.",
-        image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?q=80&w=1887&auto=format&fit=crop",
+        image: "/images/appdevelopment.png",
         imageAlt: "Team collaborating around a CRM dashboard on a screen"
     },
     {
@@ -99,14 +99,14 @@ const ProductSection = ({ product, index }) => {
                                 </li>
                             ))}
                         </ul>
-                    )}
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300"
-                    >
-                        Request a Demo
-                    </motion.button>
+                    )}  <motion.button
+                         whileHover={{ scale: 1.05 }}
+                         whileTap={{ scale: 0.95 }}
+                         className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300"
+                         onClick={() => window.location.href = "tel:+919322347666"}  // Replace with your phone number
+                       >
+                         Request a Demo
+                       </motion.button>
                 </div>
             </div>
         </motion.div>

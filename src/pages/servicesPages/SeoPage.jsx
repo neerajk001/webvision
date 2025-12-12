@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { motion } from "framer-motion";
 import { 
     Search, Target, TrendingUp, Zap, Smartphone, Monitor as Laptop, DollarSign, Shield,
@@ -10,13 +10,39 @@ import {
 // Text Color: Deep Blue (#1F2937)
 
 
+
+
+const ImageBannerSection = () => (
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []),
+   <motion.section
+    className="py-16 px-4 sm:px-10 bg-white flex justify-center"
+    // ... animation props ...
+>
+    {/* Container: Use a taller aspect ratio (e.g., aspect-4/3) */}
+    <motion.div 
+        className="w-[90%] max-w-6xl aspect-9/3" 
+        whileHover={{ scale: 1.01 }}
+    >
+        <img 
+            src="/images/native-banner.avif" 
+            alt="Image Description"
+            // Image: Ensure it covers the new aspect ratio size
+            className="w-full h-full object-cover rounded-xl shadow-2xl border-0 border-[]/50"
+        />
+    </motion.div>
+</motion.section>
+);
+
+
 // --- Pricing Card Data ---
 const pricingPlans = [
     {
         icon: Shield,
         title: "Local SEO Starter",
         subtitle: "Focus: Local Ranking & Visibility",
-        price: "₹40,000",
+        price: "₹20,000",
         features: [
             "Comprehensive Local Audit",
             "Google Business Profile Setup/Optimization",
@@ -30,7 +56,7 @@ const pricingPlans = [
         icon: Zap,
         title: "Growth Accelerator (Recommended)",
         subtitle: "Focus: National Growth & Technical SEO",
-        price: "₹75,000",
+        price: "35,000",
         features: [
             "All Starter features included",
             "Full Technical SEO Audit & Implementation",
@@ -44,7 +70,7 @@ const pricingPlans = [
         icon: DollarSign,
         title: "Enterprise E-commerce",
         subtitle: "Focus: High Volume & Global Authority",
-        price: "₹1,20,000+",
+        price: "₹65,000+",
         features: [
             "All Growth features included",
             "Dedicated ASO & Mobile App Optimization",
@@ -83,26 +109,6 @@ const itemVariants = {
     visible: { y: 0, opacity: 1 },
 };
 
-
-const ImageBannerSection = () => (
-   <motion.section
-    className="py-16 px-4 sm:px-10 bg-white flex justify-center"
-    // ... animation props ...
->
-    {/* Container: Use a taller aspect ratio (e.g., aspect-4/3) */}
-    <motion.div 
-        className="w-[90%] max-w-6xl aspect-9/3" 
-        whileHover={{ scale: 1.01 }}
-    >
-        <img 
-            src="/images/native-banner.avif" 
-            alt="Image Description"
-            // Image: Ensure it covers the new aspect ratio size
-            className="w-full h-full object-cover rounded-xl shadow-2xl border-0 border-[]/50"
-        />
-    </motion.div>
-</motion.section>
-);
 
 
 

@@ -27,25 +27,25 @@ export default function ScrollPanel() {
       id: 'whatsapp',
       icon: <WhatsAppIcon />,
       bgColor: 'bg-green-500',
-      href: 'https://wa.me/your-number', // Replace with your WhatsApp number
+      href: 'https://wa.me/+91 9322347666 ', // Replace with your WhatsApp number
     },
     {
       id: 'phone',
       icon: <Phone />,
       bgColor: 'bg-blue-500',
-      href: 'tel:your-number', // Replace with your phone number
+      href: 'tel:+91 9322347666 ', // Replace with your phone number
     },
     {
       id: 'location',
       icon: <MapPin />,
       bgColor: 'bg-indigo-600',
-      href: 'https://maps.google.com/?q=your-location', // Replace with your location
+      href: 'https://www.google.com/maps/place/Webvision+Softech+Pvt+Ltd/@19.380503,72.833471,17z/data=!4m5!3m4!1s0x0:0x6f8f9c7094bbc71d!8m2!3d19.3805025!4d72.8334713?hl=en', // Replace with your location
     },
     {
       id: 'facebook',
       icon: <Facebook />,
       bgColor: 'bg-sky-500',
-      href: 'https://facebook.com/your-profile', // Replace with your Facebook profile
+      href: 'http://facebook.com/people/Webvision-Softech-Pvt-Ltd/100054232521328/#', // Replace with your Facebook profile
     },
   ];
 
