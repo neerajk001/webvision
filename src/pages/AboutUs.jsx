@@ -138,6 +138,8 @@ const AboutUs = () => (
             ))}
         </motion.div>
 
+         
+
         {/* Cards Section */}
         <motion.div
             className="grid md:grid-cols-3 gap-8"
