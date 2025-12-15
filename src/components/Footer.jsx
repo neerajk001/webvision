@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { label } from 'framer-motion/client';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { MdLocationOn, MdEmail, MdPhone } from 'react-icons/md';
 
@@ -31,41 +32,56 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Our Services</h3>
           <ul className="space-y-2 text-sm">
             {[
-              "Software Development",
-              "Website Development",
-              "Mobile App Development",
-              "Outsourcing & Consulting",
-              "Application Development",
-              "ERP & CRM Solution",
-              "SEO & Digital Marketing",
-              "social Media Marketing"
+              { label: "Software Development", url: "/about"},
+              {label: "Website Development", url: "/"},
+              {label: "Mobile App Development",url: "/about"},
+               {label:"Outsourcing & Consulting",url: "/about"},
+               {label:"ERP & CRM Solution",url: "/about"},
+               {label:"SEO & Digital Marketing",url: "/about"},
+               {label:"social Media Marketing",url: "/about"},
 
             ].map((service, idx) => (
-              <li key={idx}>• {service}</li>
+              <li key={idx}>
+                 <a
+          href={service.url}
+          className="hover:text-blue-500 transition-colors"
+        >{service.label}
+
+           </a>
+           </li>
             ))}
           </ul>
         </motion.div>
 
         {/* Useful Links */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+       <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
+
+  <ul className="space-y-2 text-sm">
+    {[
+      { label: "About Us", url: "/about" },
+      { label: "Our Portfolios", url: "/portfolio" },
+      { label: "Our Products", url: "/product" },
+      { label: "Contact Us", url: "/contact" },
+      { label: "Terms & Conditions", url: "/terms" },
+      { label: "Privacy Policy", url: "/#" },
+    ].map((item, idx) => (
+      <li key={idx}>
+        <a
+          href={item.url}
+          className="hover:text-blue-500 transition-colors"
         >
-          <h3 className="text-lg font-semibold mb-4">Useful Links</h3>
-          <ul className="space-y-2 text-sm">
-            {[
-              "About Us",
-              "Our Portfolios",
-              "Our Products",
-              "Contact Us",
-              "Terms & Conditions",
-              "Privacy Policy"
-            ].map((link, idx) => (
-              <li key={idx}>• {link}</li>
-            ))}
-          </ul>
-        </motion.div>
+          • {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</motion.div>
+
 
         {/* Contact */}
         <motion.div
@@ -108,9 +124,9 @@ const Footer = () => {
           key={idx}
           whileHover={{ scale: 1.2 }}
           className="bg-gray-800 p-2 rounded-full hover:bg-blue-600 transition"
-          href={social.link}  // Use the real URL here
-          target="_blank"      // Opens the link in a new tab
-          rel="noopener noreferrer"  // Security best practice for external links
+          href={social.link}  
+          target="_blank"      
+          rel="noopener noreferrer"  
         >
           <social.icon size={18} />
         </motion.a>

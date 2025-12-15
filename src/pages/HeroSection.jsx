@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { User, Briefcase, Award } from 'lucide-react'; // Added lucide imports for completeness
 
-/* ===================== HELPER FUNCTIONS ===================== */
+/* ===================== CONFIGURATION & HELPER FUNCTIONS ===================== */
 
 /** Shuffles an array randomly. Used to swap card positions on page load. */
 const shuffleArray = (array) => {
@@ -15,7 +16,6 @@ const shuffleArray = (array) => {
 };
 
 /* ===================== DATA ===================== */
-// Use a constant initial data set
 const initialCardData = [
   { id: 1, text: "Software", pageUrl: "/servicesPages/SoftDevPage", imgUrl: "/serv.png" },
   { id: 2, text: "Website", pageUrl: "/servicesPages/WebDevPage", imgUrl: "/images/websitehm.png" },
@@ -27,27 +27,62 @@ const initialCardData = [
   { id: 8, text: "FAQ", pageUrl: "/about", imgUrl: "/images/FAQ.png" },
 ];
 
+/* --- MARQUEE ANIMATION LOGIC --- */
+
+// The cards are split 4/4. To create a seamless loop, we need to scroll the width of 4 cards + gaps.
+// Card width is md:w-44 (176px). Gap is gap-6 (24px). Total width per card: 200px.
+// Total scroll distance: 4 cards * 200px = 800px.
+
+const CARD_WIDTH_PLUS_GAP = 200; // Based on md:w-44 (~176px) + gap-6 (24px)
+const SCROLL_DISTANCE = 4 * CARD_WIDTH_PLUS_GAP; 
+const DURATION = 25; // Slower duration for a smoother visual effect
+
+const marqueeVariants = {
+  // Row 1: Left to Right (Moves from negative distance to 0, then loops)
+  scrollLeftToRight: {
+    x: [`-${SCROLL_DISTANCE}px`, "0px"],
+    transition: {
+      x: {
+        duration: DURATION,
+        ease: "linear",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
+  },
+  // Row 2: Right to Left (Moves from 0 to negative distance, then loops)
+  scrollRightToLeft: {
+    x: ["0px", `-${SCROLL_DISTANCE}px`],
+    transition: {
+      x: {
+        duration: DURATION,
+        ease: "linear",
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
+  },
+};
+
 /* ===================== CARD ANIMATION ===================== */
-// Modified for random, non-rotating bubble-like movement
 const floatAnimation = {
   animate: (i) => ({
-    // Random float within a small range (e.g., -10px to +10px)
-    x: [0, Math.random() * 20 - 10, 0, Math.random() * 20 - 10, 0], 
-    y: [0, Math.random() * 20 - 10, 0, Math.random() * 20 - 10, 0],
+    x: [0, Math.random() * 10 - 5, 0], 
+    y: [0, Math.random() * 10 - 5, 0],
     transition: {
       x: { 
-        duration: 4 + Math.random() * 2, // Random duration for variation
+        duration: 3 + Math.random() * 1, 
         ease: "easeInOut", 
         repeat: Infinity, 
         repeatType: "reverse",
-        delay: i * 0.2 // Stagger the start time
+        delay: i * 0.1
       },
       y: { 
-        duration: 4 + Math.random() * 2, 
+        duration: 3 + Math.random() * 1, 
         ease: "easeInOut", 
         repeat: Infinity, 
         repeatType: "reverse",
-        delay: i * 0.2
+        delay: i * 0.1
       },
     },
   }),
@@ -65,10 +100,8 @@ const AnimatedCard = ({ data, index }) => (
       w-28 h-28
       sm:w-32 sm:h-32
       md:w-44 md:h-44
-      
-      /* Card Shape: Square */
-      rounded-lg /* Use rounded corners for a softer square look */
-      
+      flex-shrink-0 /* Essential for horizontal scrolling */
+      rounded-lg
       cursor-pointer
       shadow-xl
       bg-cover bg-center
@@ -78,25 +111,22 @@ const AnimatedCard = ({ data, index }) => (
     style={{ backgroundImage: `url(${data.imgUrl})` }}
     whileHover={{ scale: 1.08 }}
   >
-    {/* Text is now static (no counter-rotation needed) */}
     <div className="bg-black/50 px-3 py-1 rounded-md text-sm text-white font-semibold">
       {data.text}
     </div>
   </motion.div>
 );
 
-/* ===================== MOBILE CIRCLE ===================== */
-// The circular layout positions the cards, but the cards themselves are square
-const CircularLayout = ({ cards }) => {
-  const radius = 120; // Adjusted radius for better spacing of square cards
+/* ===================== MOBILE CIRCLE / BUBBLE BACKGROUND (Unchanged) ===================== */
 
+const CircularLayout = ({ cards }) => {
+  const radius = 120; 
   return (
     <div className="relative w-[300px] h-[300px] mx-auto z-10">
       {cards.map((card, index) => {
         const angle = (index / cards.length) * 2 * Math.PI;
         const x = radius * Math.cos(angle);
         const y = radius * Math.sin(angle);
-
         return (
           <div
             key={card.id}
@@ -105,7 +135,6 @@ const CircularLayout = ({ cards }) => {
               transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
             }}
           >
-            {/* Swiping position is achieved by shuffling the cards array in HeroSection */}
             <AnimatedCard data={card} index={index} />
           </div>
         );
@@ -114,8 +143,6 @@ const CircularLayout = ({ cards }) => {
   );
 };
 
-/* ===================== BUBBLES ===================== */
-// Reusing your existing Bubble components which create a nice background effect
 const Bubble = ({ side, size, delay, duration }) => (
   <motion.span
     className="absolute bottom-0 rounded-full bg-sky-600/30"
@@ -144,7 +171,7 @@ const BubbleBackground = () => (
       <Bubble
         key={i}
         side={i % 2 === 0 ? "left" : "right"}
-        size={`${10 + Math.random() * 80}px`} // Smaller, tighter bubbles
+        size={`${10 + Math.random() * 80}px`} 
         delay={Math.random() * 5}
         duration={8 + Math.random() * 6}
       />
@@ -154,21 +181,20 @@ const BubbleBackground = () => (
 
 /* ===================== MAIN SECTION ===================== */
 const HeroSection = () => {
-  // Use state to hold the card data, initialized with a shuffled version
-  const [shuffledData, setShuffledData] = useState(
+  const [shuffledData] = useState(
     () => shuffleArray([...initialCardData])
   );
 
-  // Split the shuffled data into two rows
-  const row1 = shuffledData.slice(0, 4);
-  const row2 = shuffledData.slice(4, 8);
+  // Split the data into two rows and duplicate them for the seamless scroll loop
+  const row1Original = shuffledData.slice(0, 4);
+  const row2Original = shuffledData.slice(4, 8);
   
-  // The useEffect with an empty dependency array ensures the shuffle happens ONLY on mount (page reload)
-  // This satisfies the requirement to "alternate only when page reoad"
+  const row1 = [...row1Original, ...row1Original];
+  const row2 = [...row2Original, ...row2Original];
+  
+  // useEffect kept empty for the initial shuffle on mount requirement
   useEffect(() => {
-    // This state update is actually redundant if initialized correctly above, 
-    // but serves as a clear point for where the shuffle logic lives.
-    // If the data was fetched asynchronously, the shuffle would happen here.
+    // This runs once on mount.
   }, []); 
 
   return (
@@ -186,27 +212,37 @@ const HeroSection = () => {
         <CircularLayout cards={shuffledData} />
       </div>
 
-      {/* DESKTOP – ROW Layout */}
-      <div className="hidden md:flex relative z-10 max-w-7xl mx-auto flex-col gap-12">
+      {/* DESKTOP – ROW Layout (Automated Marquee Scroll) */}
+      <div className="hidden md:block relative z-10 max-w-7xl mx-auto overflow-hidden">
         
-        {/* First Row (4 Cards) */}
-        <div className="flex justify-around items-center gap-6">
-          {row1.map((card, index) => (
-            // The key is essential for React to track the movement of the cards 
-            // after the shuffle (swiping the position)
-            <AnimatedCard key={card.id} data={card} index={index} />
-          ))}
+        {/* Row 1 (Left to Right Scroll) */}
+        <div className="my-6">
+          <motion.div
+            className="flex gap-24 w-max" // w-max ensures the container width supports the duplicated items
+            variants={marqueeVariants}
+            animate="scrollLeftToRight"
+          >
+            {row1.map((card, index) => (
+              <AnimatedCard key={card.id + "-1-" + index} data={card} index={index} />
+            ))}
+          </motion.div>
         </div>
 
-        {/* Second Row (4 Cards) */}
-        <div className="flex justify-around items-center gap-6">
-          {row2.map((card, index) => (
-            // Use index + 4 for the custom prop to ensure proper animation staggering
-            <AnimatedCard key={card.id} data={card} index={index + 4} />
-          ))}
+        {/* Row 2 (Right to Left Scroll) */}
+        <div className="my-6">
+          <motion.div
+            className="flex gap-24 w-max"
+            variants={marqueeVariants}
+            animate="scrollRightToLeft"
+          >
+            {row2.map((card, index) => (
+              <AnimatedCard key={card.id + "-2-" + index} data={card} index={index + 4} />
+            ))}
+          </motion.div>
         </div>
 
       </div>
+      
     </section>
   );
 };

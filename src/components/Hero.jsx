@@ -6,7 +6,7 @@ const Hero = () => {
     <section className="bg-gray-100 py-12 px-4 md:px-16">
       {/* <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10"> */}
        
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
         
         {/* Left: Image Placeholder */}
         <div className="flex-1 bg-gray-300 h-64 w-full rounded-lg flex items-center justify-center text-gray-600 text-sm">

@@ -5,31 +5,38 @@ import { Star, Quote, ArrowRight } from 'lucide-react';
 // Updated testimonials data with more variety and placeholder avatars
 const testimonials = [
   {
-    name: 'James Doe',
+    // Updated name: Indian Male Name
+    name: 'Rajesh Sharma', 
     role: 'Business Man | Seller',
     text: "I went to WebVision, and it's completely boomed my sales through the service they provide. I have doubled my income—highly recommended!",
-    avatar: 'https://placehold.co/100x100/E0E7FF/4F46E5?text=JD',
+    // Updated avatar placeholder initials (RS)
+    avatar: 'https://placehold.co/100x100/E0E7FF/4F46E5?text=RS', 
   },
   {
-    name: 'Sarah Lynn',
+    // Updated name: Indian Female Name
+    name: 'Priya Verma', 
     role: 'Startup Founder',
     text: 'The team delivered a stunning website that perfectly captures our brand. The process was smooth, and the results exceeded our expectations.',
-    avatar: 'https://placehold.co/100x100/FEF2F2/B91C1C?text=SL',
+    // Updated avatar placeholder initials (PV)
+    avatar: 'https://placehold.co/100x100/FEF2F2/B91C1C?text=PV', 
   },
   {
-    name: 'Michael Chen',
+    // Updated name: Indian Male Name
+    name: 'Arjun Singh', 
     role: 'E-commerce Manager',
     text: 'Our online store has never performed better. The new design is not only beautiful but also incredibly user-friendly, leading to a significant increase in conversions.',
-    avatar: 'https://placehold.co/100x100/D1FAE5/059669?text=MC',
+    // Updated avatar placeholder initials (AS)
+    avatar: 'https://placehold.co/100x100/D1FAE5/059669?text=AS', 
   },
    {
-    name: 'Emily Carter',
+    // Updated name: Indian Female Name
+    name: 'Neha Gupta', 
     role: 'Marketing Director',
     text: 'A truly professional and talented team. They understood our vision from day one and brought it to life with creativity and precision.',
-    avatar: 'https://placehold.co/100x100/FFFBEB/B45309?text=EC',
+    // Updated avatar placeholder initials (NG)
+    avatar: 'https://placehold.co/100x100/FFFBEB/B45309?text=NG', 
   },
 ];
-
 // To create a seamless loop, we duplicate the testimonials array.
 const duplicatedTestimonials = [...testimonials, ...testimonials];
 
@@ -111,7 +118,7 @@ const Testimonials = () => {
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
          >
-            Get Started <ArrowRight className="ml-2" size={20}/>
+           <a href='/contact'> Get Started</a> <ArrowRight className="ml-2" size={20}/>
          </motion.button>
       </div>
     </section>

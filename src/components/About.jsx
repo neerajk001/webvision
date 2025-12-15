@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Aboutus = () => {
   const cardText =
     'We provide our clients with the exact tailor-made software solutions that will meet their specific business requirements. Our team of experienced and technical software developers will integrate application development with your line of business.';
@@ -43,6 +44,7 @@ const Aboutus = () => {
           </div>
         </div>
       </div>
+      
     </section>
   );
 };

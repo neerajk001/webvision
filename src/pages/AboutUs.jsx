@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Aboutus from '../components/About';
 
 // --- Helper Components: Icons ---
 const ArrowRightIcon = () => (
@@ -180,6 +181,7 @@ const AboutUs = () => (
                 </p>
             </motion.div>
         </motion.div>
+        <div className='mt-16'> <Aboutus /></div>
     </div>
 );
 

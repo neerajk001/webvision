@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
 
 // --- Helper Components ---
 
@@ -18,31 +19,37 @@ const servicesList = [
         title: 'Web & App Development',
         description: 'Crafting responsive, high-performance websites and mobile applications tailored to your business needs.',
         imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop',
+        link: "/servicesPages/WebDevPage",
     },
     {
         title: 'UI/UX Design',
         description: 'Designing intuitive, engaging, and user-centric interfaces that deliver a seamless user experience.',
         imageUrl: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop',
+        link: "/servicesPages/SoftDevPage",
     },
     {
         title: 'Cloud Solutions',
         description: 'Leveraging cloud infrastructure to provide scalable, secure, and cost-effective solutions for your business.',
         imageUrl: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop',
+        link: "/servicesPages/ERPCrmPage",
     },
     {
         title: 'Digital Marketing',
         description: 'Boosting your online presence with data-driven marketing strategies, from SEO to social media campaigns.',
         imageUrl: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop',
+        link: "/servicesPages/SeoPage",
     },
     {
         title: 'Software Maintenance',
         description: 'Ensuring your applications run smoothly with proactive maintenance, updates, and dedicated support.',
         imageUrl: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=2070&auto=format&fit=crop',
+        link: "/servicesPages/SoftDevPage",
     },
     {
         title: 'Branding & Identity',
         description: 'Building a strong brand identity with memorable logos, style guides, and compelling brand narratives.',
         imageUrl: 'https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=2070&auto=format&fit=crop',
+        link: "/servicesPages/SmmPage",
     },
 ];
 
@@ -104,6 +111,13 @@ const Services = () => {
                     viewport={{ once: true, amount: 0.2 }}
                 >
                     {servicesList.map((service, index) => (
+                                 <Link
+                      to={service.link}
+                      key={index}
+                      className="
+                        no-underline
+                      "
+                    >
                         <motion.div
                             key={index}
                             className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
@@ -135,7 +149,7 @@ const Services = () => {
                                     <ArrowRightIcon />
                                 </a>
                             </div>
-                        </motion.div>
+                        </motion.div></Link>
                     ))}
                 </motion.div>
             </div>

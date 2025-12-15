@@ -26,14 +26,16 @@ import ItBusinessPage from "./pages/servicesPages/ItBusinessPage";
 import ERPCRMPage from "./pages/servicesPages/ERPCRMPage";
 import SeoPage from "./pages/servicesPages/SeoPage";
 import SmmPage from "./pages/servicesPages/SmmPage";
+import HeroSection from "./pages/HeroSection";
 
 const Home = () => {
   return (
     <>
+      <HeroSection/>
       <Hero />
-      <Aboutus />
       <Services />
       <IndustriesWeServe />
+        <Aboutus />
       <TeamSection />
       <Testimonials />
     </>
