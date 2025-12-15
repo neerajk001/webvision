@@ -8,7 +8,7 @@ import Services from "./components/Services";
 import IndustriesWeServe from "./components/IndustriesWeServe";
 import TeamSection from "./components/TeamSection";
 import Testimonials from "./components/Testimonials";
-import ChatbotSystem from "./components/ChatbotSystem";
+// import ChatbotSystem from "./components/ChatbotSystem";
 import Footer from "./components/Footer";
 
 import AboutUs from "./pages/AboutUs";
@@ -78,7 +78,7 @@ const App = () => {
           <Route path="/servicesPages/SmmPage" element={<SmmPage />} />
         </Routes>
       </main>
-      <ChatbotSystem />
+      {/* <ChatbotSystem /> */}
        <Footer /> 
     </Router>
   );

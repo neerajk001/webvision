@@ -141,13 +141,13 @@ const Services = () => {
                                 <p className="text-gray-600 text-sm mb-4 flex-grow">
                                     {service.description}
                                 </p>
-                                <a
+                                <span
                                     href="#"
                                     className="text-blue-600 hover:text-blue-700 text-sm font-semibold mt-auto inline-flex items-center group"
                                 >
                                     Read More
                                     <ArrowRightIcon />
-                                </a>
+                                </span>
                             </div>
                         </motion.div></Link>
                     ))}

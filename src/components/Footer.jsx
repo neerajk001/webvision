@@ -33,22 +33,19 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Our Services</h3>
           <ul className="space-y-2 text-sm">
             {[
-              { label: "Software Development", url: "/about"},
-              {label: "Website Development", url: "/"},
-              {label: "Mobile App Development",url: "/about"},
-               {label:"Outsourcing & Consulting",url: "/about"},
-               {label:"ERP & CRM Solution",url: "/about"},
-               {label:"SEO & Digital Marketing",url: "/about"},
-               {label:"social Media Marketing",url: "/about"},
+              { label: "Software Development", url: "/servicesPages/SoftDevPage"},
+              {label: "Website Development", url: "/servicesPages/WebDevPage"},
+              {label: "Mobile App Development",url: "/servicesPages/appDev"},
+               {label:"Outsourcing & Consulting",url: "/servicesPages/OutConsultPage"},
+               {label:"ERP & CRM Solution",url: "/servicesPages/ERPCrmPage"},
+               {label:"SEO & Digital Marketing",url: "/servicesPages/SeoPage"},
+               {label:"social Media Marketing",url: "/servicesPages/SmmPage"},
 
             ].map((service, idx) => (
               <li key={idx}>
-                 <a
-          href={service.url}
-          className="hover:text-blue-500 transition-colors"
-        >{service.label}
-
-           </a>
+            <Link to={service.url} className="hover:text-blue-500 transition-colors">
+              {service.label}
+            </Link>
            </li>
             ))}
           </ul>
