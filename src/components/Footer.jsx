@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { label } from 'framer-motion/client';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { MdLocationOn, MdEmail, MdPhone } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -71,12 +72,9 @@ const Footer = () => {
       { label: "Privacy Policy", url: "/#" },
     ].map((item, idx) => (
       <li key={idx}>
-        <a
-          href={item.url}
-          className="hover:text-blue-500 transition-colors"
-        >
-          • {item.label}
-        </a>
+       <Link to={item.url} className="hover:text-blue-500 transition-colors">
+    {item.label}
+</Link>
       </li>
     ))}
   </ul>
