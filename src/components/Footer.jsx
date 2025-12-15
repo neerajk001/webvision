@@ -65,7 +65,7 @@ const Footer = () => {
       { label: "Our Portfolios", url: "/portfolio" },
       { label: "Our Products", url: "/product" },
       { label: "Contact Us", url: "/contact" },
-      { label: "Terms & Conditions", url: "/terms" },
+      { label: "Terms & Conditions", url: "/#" },
       { label: "Privacy Policy", url: "/#" },
     ].map((item, idx) => (
       <li key={idx}>
