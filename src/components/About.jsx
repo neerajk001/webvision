@@ -4,7 +4,7 @@ import React from 'react';
 const Aboutus = () => {
   const cardText =
     'We provide our clients with the exact tailor-made software solutions that will meet their specific business requirements. Our team of experienced and technical software developers will integrate application development with your line of business.';
-
+  
   return (
     <section className="bg-gray-100 py-12 px-4 md:px-16">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
