@@ -245,17 +245,19 @@ const Contact = () => {
                     <ContactForm targetEmail={primaryEmail} /> 
 
                     {/* Embedded Map */}
-                    <div className="mt-16 rounded-xl shadow-2xl overflow-hidden">
+                     <div className="mt-16 rounded-xl shadow-2xl overflow-hidden">
                          <iframe
-                             src={`https://maps.google.com/maps?q=${encodeURIComponent(addressLines.join(', '))}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
-                             width="100%"
+                            title="Web Vision Softech Pvt Ltd"
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8522578757097!2d72.82472579044662!3d19.383660527566988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af321745c20b%3A0x6f8f9c7094bbc71d!2sweb%20vision%20softech%20pvt%20ltd!5e0!3m2!1sen!2sin!4v1765956617200!5m2!1sen!2sin"
+                               width="100%"
                              height="450"
                              style={{ border: 0 }}
                              allowFullScreen=""
                              loading="lazy"
                              referrerPolicy="no-referrer-when-downgrade"
                          ></iframe>
-                    </div>
+                    </div>  
+
                 </motion.div>
             </div>
         </div>
