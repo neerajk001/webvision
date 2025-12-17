@@ -119,7 +119,7 @@ const HeroSection = () => (
                     <img 
                         src="/images/smm_dashboard.png" 
                         alt="Social media marketing dashboard illustration"
-                        className="w-full h-full rounded-xl shadow-2xl border-4 border-[#3B82F6]"
+                        className="w-full h-full  shadow-2xl "
                     /> 
                 </div>
             </motion.div>
@@ -152,7 +152,7 @@ const PaidAdsSection = () => (
                 <img 
                     src="/images/paid_ads_setup.png" // Placeholder image for Paid Ads Setup
                     alt="Targeted social media advertising setup"
-                    className="w-full  rounded-xl shadow-2xl b"
+                    className="w-full   shadow-2xl "
                 />
             </motion.div>
 
@@ -206,14 +206,14 @@ const ImageMosaicSection = () => (
                         <img 
                             src="/images/facebook_ad.jpg" // Placeholder: Facebook Ad
                             alt="Facebook advertising mockup"
-                            className="w-full h-full object-cover rounded-xl shadow-lg aspect-[16/9]"
+                            className="w-full h-full object-cover  shadow-lg aspect-[16/9]"
                         />
                     </motion.div>
                     <motion.div className="w-[60%]" variants={itemVariants} whileHover={{ scale: 1.03 }}>
                         <img 
                             src="/images/instagram_reel.jpg" // Placeholder: Instagram Reel
                             alt="Instagram Reel content creation"
-                            className="w-full h-full object-cover rounded-xl shadow-lg aspect-[16/9]"
+                            className="w-full h-full object-cover  shadow-lg aspect-[16/9]"
                         />
                     </motion.div>
                 </div>
@@ -224,14 +224,14 @@ const ImageMosaicSection = () => (
                         <img 
                             src="/images/linkedin_b2b.jpg" // Placeholder: LinkedIn B2B Post
                             alt="LinkedIn B2B marketing content"
-                            className="w-full h-full object-cover rounded-xl shadow-lg aspect-[16/9]"
+                            className="w-full h-full object-cover  shadow-lg aspect-[16/9]"
                         />
                     </motion.div>
                     <motion.div className="w-[40%]" variants={itemVariants} whileHover={{ scale: 1.03 }}>
                         <img 
                             src="/images/tiktok_viral.jpg" // Placeholder: TikTok/Short form
                             alt="TikTok viral video strategy"
-                            className="w-full h-full object-cover rounded-xl shadow-lg aspect-[16/9]"
+                            className="w-full h-full object-cover  shadow-lg aspect-[16/9]"
                         />
                     </motion.div>
                 </div>
@@ -247,7 +247,7 @@ const ImageMosaicSection = () => (
 // ----------------------------------------------------------------------
 const PillarCard = ({ icon: Icon, title, description }) => (
     <motion.div
-        className="p-6 bg-white rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center h-full"
+        className="p-6 bg-white  shadow-lg border border-gray-100 flex flex-col items-center text-center h-full"
         variants={itemVariants}
         whileHover={{ scale: 1.05, y: -5, boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.1)" }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -317,7 +317,7 @@ const PricingSection = () => (
                 {pricingPlans.map((plan, index) => (
                     <motion.div 
                         key={index}
-                        className={`p-8 bg-white rounded-xl shadow-xl transition duration-300 border-t-8 border-b-8 ${plan.accent.replace('text', 'border')} ${plan.shadow} flex flex-col`}
+                        className={`p-8 bg-white  shadow-xl transition duration-300 border-t-8 border-b-8 ${plan.accent.replace('text', 'border')} ${plan.shadow} flex flex-col`}
                         variants={itemVariants}
                         whileHover={{ scale: 1.05, y: -8, boxShadow: `0px 15px 30px ${plan.shadow.split('/')[0].split('-')[1]}/80` }}
                     >
@@ -344,7 +344,7 @@ const PricingSection = () => (
                         <div className="mt-8">
                             <a 
                                 href="#contact-form" 
-                                className={`block w-full text-center py-3 rounded-lg font-semibold transition duration-300 
+                                className={`block w-full text-center py-3  font-semibold transition duration-300 
                                             bg-[#3B82F6] text-white hover:bg-blue-600 shadow-md`}
                             >
                                 Get Custom Proposal
@@ -362,7 +362,7 @@ const PricingSection = () => (
 // ----------------------------------------------------------------------
 const ContactSection = () => (
     <section className="py-20 px-4 sm:px-10 bg-gray-50 border-t border-gray-200">
-        <div className="max-w-3xl mx-auto p-10 bg-white rounded-xl shadow-2xl text-center">
+        <div className="max-w-3xl mx-auto p-10 bg-white  shadow-2xl text-center">
             <h2 className="text-3xl font-bold mb-4 text-[#1F2937]">Ready to Go Viral?</h2>
             <p className="text-lg text-gray-600 mb-6">
                 Contact us for a free social media audit and see how we can transform your brand's presence.
@@ -370,7 +370,7 @@ const ContactSection = () => (
             <motion.a 
                 href="mailto:webvisionsoftech@gmail.com?subject=SMM%20Service%20Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20Social%20Media%20Marketing%20services.%20My%20brand%20is%20..." 
                 id="contact-form"
-                className="inline-block px-8 py-4 text-xl font-bold rounded-full text-white bg-[#3B82F6] 
+                className="inline-block px-8 py-4 text-xl font-bold  text-white bg-[#3B82F6] 
                             transition duration-300 hover:bg-blue-600 shadow-lg"
                 
                 whileHover={{ scale: 1.05 }}

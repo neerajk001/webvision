@@ -8,7 +8,7 @@ import Services from "./components/Services";
 import IndustriesWeServe from "./components/IndustriesWeServe";
 import TeamSection from "./components/TeamSection";
 import Testimonials from "./components/Testimonials";
- import ChatbotSystem from "./components/ChatbotSystem";
+import ChatbotSystem from "./components/ChatbotSystem";
 import Footer from "./components/Footer";
 
 import AboutUs from "./pages/AboutUs";
@@ -28,15 +28,16 @@ import ERPCRMPage from "./pages/servicesPages/ERPCRMPage";
 import SeoPage from "./pages/servicesPages/SeoPage";
 import SmmPage from "./pages/servicesPages/SmmPage";
 import HeroSection from "./pages/HeroSection";
+import TermsPage from "./pages/TermsPage";
 
 const Home = () => {
   return (
     <>
-      <HeroSection/>
+      <HeroSection />
       <Hero />
       <Services />
       <IndustriesWeServe />
-        <Aboutus />
+      <Aboutus />
       <TeamSection />
       <Testimonials />
     </>
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/client" element={<OurClients />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/demo" element={<Demo />} />
+          <Route path="/TermsPage" element={<TermsPage />} />
 
           <Route path="/servicesPages/appDev" element={<AppDevlopPage />} />
           <Route
@@ -79,7 +81,7 @@ const App = () => {
         </Routes>
       </main>
       <ChatbotSystem />
-       <Footer /> 
+      <Footer />
     </Router>
   );
 };

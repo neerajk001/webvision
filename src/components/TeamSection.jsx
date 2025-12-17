@@ -5,13 +5,7 @@ import { User, Briefcase, Award, Zap, Phone, Mail } from 'lucide-react';
 // --- Updated Team Member Data (More members added) ---
 // We use 6 members so the animation loop is noticeable.
 const teamMembers = [
-    {
-        name: 'Dheeraj Prajapati',
-        role: 'React Developer (Lead)',
-        experience: '1+ Year Experience',
-        avatar: 'https://placehold.co/128x128/E0E7FF/4F46E5?text=DP',
-        primaryColor: 'text-indigo-600',
-    },
+    
     {
         name: 'sachin singh',
         role: 'PHP & mobile developer ',
@@ -34,17 +28,16 @@ const teamMembers = [
         primaryColor: 'text-red-600',
     },
     {
-        name: 'Akash Jha',
-        role: 'web & Mobile Developer',
-        experience: '2+ Years Experience',
-        avatar: 'https://placehold.co/128x128/FFF7ED/F97316?text=AJ',
-        primaryColor: 'text-orange-600',
-    },
-    {
         name: 'Priyanka ',
         role: 'mobile devloper',
         experience: '2+ Years Experience',
         avatar: 'https://placehold.co/128x128/F3E8FF/A855F7?text=PG',
+        primaryColor: 'text-purple-600',
+    }, {
+        name: 'Harsh Dubey ',
+        role: 'Fullstack devloper',
+        experience: '1 Years Experience',
+        avatar: 'https://placehold.co/128x128/F3E8FF/A855F7?text=HD',
         primaryColor: 'text-purple-600',
     },
 ];

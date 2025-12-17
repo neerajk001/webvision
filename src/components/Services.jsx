@@ -120,7 +120,7 @@ const Services = () => {
                     >
                         <motion.div
                             key={index}
-                            className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
+                            className="group bg-white  overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
                             variants={cardVariants}
                         >
                             {/* Image Container */}
@@ -140,7 +140,7 @@ const Services = () => {
                                 </h3>
                                 <p className="text-gray-600 text-sm mb-4 flex-grow">
                                     {service.description}
-                                </p>
+                                </p> 
                                 <span
                                     href="#"
                                     className="text-blue-600 hover:text-blue-700 text-sm font-semibold mt-auto inline-flex items-center group"
