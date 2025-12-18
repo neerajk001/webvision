@@ -156,9 +156,7 @@ const TermsPage = () => {
                 You agree to indemnify Object Retrieval against all claims resulting from your breach of these terms. 
                 Access may be suspended without notice for violations.
               </p>
-              <button className="mt-6 rounded-full bg-orange-500 px-8 py-3 font-bold text-white transition hover:bg-orange-600">
-                Contact Legal Support
-              </button>
+              
             </div>
           </div>
         </motion.section>

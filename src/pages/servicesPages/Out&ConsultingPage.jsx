@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import InlineContactForm from "../../components/InlineContactForm";
 import { 
     Users, Briefcase, Target, Cloud, Settings, Zap, 
     Layers, Database, Shield, Globe, Smartphone, TrendingUp,
@@ -295,17 +296,7 @@ const ContactSection = () => (
             <p className="text-lg text-gray-600 mb-6">
                 Let's discuss how our outsourcing and consulting services can help your business grow. Contact us for a free consultation.
             </p>
-            <motion.a 
-                href="mailto:webvisionsoftech@gmail.com?subject=Outsourcing%20%26%20Consulting%20Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20Outsourcing%20and%20Consulting%20services.%20My%20business%20needs%20..." 
-                id="contact-form"
-                className="inline-block px-8 py-4 text-xl font-bold rounded-full text-white bg-[#3B82F6] 
-                            transition duration-300 hover:bg-blue-600 shadow-lg"
-                
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                START PARTNERSHIP
-            </motion.a> 
+                <InlineContactForm targetEmail="webvisionsoftech@gmail.com" />
         </div>
     </section>
 );

@@ -1,149 +1,188 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { CheckCircle, ArrowRight, Smartphone, ShieldCheck, Zap } from 'lucide-react';
 
-// --- Mock Data for Products ---
-// Updated with more specific images.
 const products = [
     {
         title: "POS Software Development",
-        description: "Increase sales by 20-30% with our efficient POS system. It reduces inventory holding costs, increases space productivity, and maximizes margins with lower investment, encouraging repeat business from loyal customers.",
-        features: [
-            "User Friendly Interface",
-            "Fully Responsive Design",
-            "Cross Browser Support",
-        ],
+        tagline: "Retail & Sales Management",
+        description: "Scale your retail operations with a smart POS that automates inventory, maximizes margins, and integrates loyalty programs effortlessly.",
+        features: ["Inventory Tracking", "Cloud Reporting", "Loyalty Management"],
         image: "/images/app_analytics_dashboard.jpg",
-        imageAlt: "Modern Point of Sale system in a boutique"
+        color: "blue"
     },
     {
-        title: "CRM Software",
-        description: "Designed for small, mid-market, and enterprise organizations with a focus on sales and support. Our CRM offers vertical solutions for a wide variety of industry-specific needs.",
+        title: "Advanced CRM Software",
+        tagline: "Customer Relationship Hub",
+        description: "Transform your sales pipeline. Our CRM provides vertical solutions tailored for mid-market and enterprise-level lead tracking and customer support.",
+        features: ["Lead Scoring", "Automated Workflows", "360° View"],
         image: "/images/appdevelopment.png",
-        imageAlt: "Team collaborating around a CRM dashboard on a screen"
+        color: "indigo"
     },
     {
-        title: "Invoice and Billing Software",
-        description: "A multi-company system allowing you to create and manage multiple entities under a single license. Easily import & export customer, vendor, and inventory lists from various formats like MS Excel and CSV.",
+        title: "Invoice & Billing Pro",
+        tagline: "Multi-Entity Financials",
+        description: "Manage multiple companies under a single license. Seamlessly import financial lists and export tax-ready reports in one click.",
+        features: ["Multi-Currency", "Tax Automation", "Excel Integration"],
         image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?q=80&w=2070&auto=format&fit=crop",
-        imageAlt: "Person reviewing an invoice on a tablet"
+        color: "cyan"
     },
     {
-        title: "Jewelry Management Software",
-        description: "Specialized software for jewelers to manage complex stock using barcode tags. Enables fast article tracking and provides robust protection against theft of valuable products.",
+        title: "Jewelry Management",
+        tagline: "Inventory Security",
+        description: "Protect your high-value assets with barcodearticle tracking. Specialized ARTICLE-WISE tracking prevents theft and simplifies stock audits.",
+        features: ["Barcode Scanning", "Article Tracking", "Theft Protection"],
         image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=2070&auto=format&fit=crop",
-        imageAlt: "Close-up of a diamond ring being inspected"
+        color: "orange"
     },
     {
-        title: "Institute Management Software",
-        description: "Comprehensive software for schools to manage student records, fee collections, transport routes, birthday reminders, concessions, dues, defaulter lists, examinations, and library operations.",
+        title: "Institute Management",
+        tagline: "Education Administration",
+        description: "A centralized hub for schools to handle student records, fee collections, library operations, and transport routes in real-time.",
+        features: ["Student CRM", "Library Mgmt", "Fee Automation"],
         image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2070&auto=format&fit=crop",
-        imageAlt: "Students in a lecture hall using technology"
+        color: "purple"
     }
 ];
 
-// --- Components ---
-
-/**
- * ProductSection Component
- * Displays a single product with its details and image.
- * The layout alternates for visual variety.
- */
 const ProductSection = ({ product, index }) => {
     const isReversed = index % 2 !== 0;
 
-    const cardVariants = {
-        offscreen: {
-            y: 50,
-            opacity: 0
-        },
-        onscreen: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                bounce: 0.4,
-                duration: 0.8
-            }
-        }
-    };
-
     return (
         <motion.div
-            className="w-full"
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={cardVariants}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "circOut" }}
+            className="group relative"
         >
-            <div className={`flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 ${isReversed ? 'md:flex-row-reverse' : ''}`}>
-                {/* Image Section */}
-                <div className="w-full md:w-5/12">
-                    <img
-                        src={product.image}
-                        alt={product.imageAlt}
-                        className="rounded-lg shadow-xl object-cover w-full h-auto"
-                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e2e8f0/4a5568?text=Product+Image'; }}
-                    />
-                </div>
+            <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
+                
+                {/* Visual Section with 3D Float */}
+                <motion.div 
+                    className="w-full lg:w-1/2 relative"
+                    whileHover={{ scale: 1.02, rotateY: isReversed ? -5 : 5 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                >
+                    {/* Background Glow */}
+                    <div className={`absolute -inset-4 bg-${product.color}-500/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                    
+                    {/* Image "Frame" */}
+                    <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 bg-white p-2">
+                        <img
+                            src={product.image}
+                            alt={product.title}
+                            className="rounded-xl object-cover w-full h-[300px] md:h-[450px]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+                    </div>
 
-                {/* Text Content Section */}
-                <div className="w-full md:w-6/12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{product.title}</h2>
-                    <p className="text-gray-600 mb-6 text-lg leading-relaxed">{product.description}</p>
-                    {product.features && (
-                        <ul className="space-y-2 mb-8">
-                            {product.features.map((feature, i) => (
-                                <li key={i} className="flex items-center text-gray-700">
-                                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    )}  <motion.button
-                         whileHover={{ scale: 1.05 }}
-                         whileTap={{ scale: 0.95 }}
-                         className="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300"
-                         onClick={() => window.location.href = "tel:+919322347666"}  // Replace with your phone number
-                       >
-                         Request a Demo
-                       </motion.button>
+                    {/* Floating Info Tag */}
+                    <motion.div 
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -bottom-6 -right-6 hidden md:flex bg-white p-4 rounded-xl shadow-xl items-center gap-3 border border-slate-100"
+                    >
+                        <div className={`p-2 bg-${product.color}-100 rounded-lg text-${product.color}-600`}>
+                            <ShieldCheck size={20} />
+                        </div>
+                        <span className="text-sm font-bold text-slate-800">Verified Secure</span>
+                    </motion.div>
+                </motion.div>
+
+                {/* Content Section */}
+                <div className="w-full lg:w-1/2 space-y-6">
+                    <div className="space-y-2">
+                        <span className={`text-${product.color}-600 font-bold tracking-[0.2em] uppercase text-xs`}>
+                            {product.tagline}
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                            {product.title}
+                        </h2>
+                    </div>
+
+                    <p className="text-slate-500 text-lg leading-relaxed">
+                        {product.description}
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {product.features?.map((feature, i) => (
+                            <div key={i} className="flex items-center gap-2 group/feat">
+                                <CheckCircle size={18} className="text-blue-500 group-hover/feat:scale-125 transition-transform" />
+                                <span className="text-slate-700 font-medium">{feature}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="pt-6">
+                        <motion.a
+                            href="tel:+919322347666"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="inline-flex items-center gap-3 bg-slate-900 text-white font-black py-4 px-10 rounded-full shadow-2xl hover:bg-blue-600 transition-all duration-300 group"
+                        >
+                            Request a Demo
+                            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                        </motion.a>
+                    </div>
                 </div>
             </div>
         </motion.div>
     );
 };
 
-/**
- * OurProducts Component
- * The main page component that lays out all the products.
- */
 const OurProducts = () => {
     return (
-        <div className="bg-white min-h-screen">
-            <div className="container mx-auto px-6 py-16 md:py-24">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease: 'easeOut' }}
-                    className="text-center mb-16 md:mb-24"
-                >
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-3">
-                        Our Software Products
-                    </h1>
-                    <p className="text-xl text-gray-500 max-w-3xl mx-auto">
-                        Powerful, reliable, and user-friendly solutions designed to streamline your business operations and drive growth.
-                    </p>
-                </motion.div>
+        <div className="bg-[#FCFDFF] min-h-screen relative overflow-hidden">
+            {/* Ambient Background Elements */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] -z-10" />
+            <div className="absolute bottom-1/2 left-0 w-[400px] h-[400px] bg-purple-50 rounded-full blur-[120px] -z-10" />
 
-                {/* Products Grid */}
-                <div className="space-y-20 md:space-y-32">
+            <div className="container mx-auto px-6 py-20 lg:py-32">
+                {/* Hero Header */}
+                <div className="max-w-4xl mx-auto text-center mb-24 lg:mb-40 space-y-6">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase"
+                    >
+                        <Zap size={14} /> Global Enterprise Solutions
+                    </motion.div>
+                    
+                    <motion.h1 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight"
+                    >
+                        Future-Ready <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                            Software Products
+                        </span>
+                    </motion.h1>
+                    
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed"
+                    >
+                        Custom-engineered digital tools that scale with your vision. Reliable, secure, and built for growth.
+                    </motion.p>
+                </div>
+
+                
+
+                {/* Vertical Product Showcase */}
+                <div className="space-y-32 lg:space-y-56">
                     {products.map((product, index) => (
                         <ProductSection key={index} product={product} index={index} />
                     ))}
                 </div>
             </div>
+
+
         </div>
     );
 };
- export default OurProducts
+
+export default OurProducts;

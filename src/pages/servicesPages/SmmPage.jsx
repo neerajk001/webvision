@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import InlineContactForm from "../../components/InlineContactForm";
 import { 
     Users, TrendingUp, DollarSign, Target, Code, Shield, 
     Facebook, Instagram, Youtube, Zap, Monitor, MessageSquare, 
@@ -367,17 +368,7 @@ const ContactSection = () => (
             <p className="text-lg text-gray-600 mb-6">
                 Contact us for a free social media audit and see how we can transform your brand's presence.
             </p>
-            <motion.a 
-                href="mailto:webvisionsoftech@gmail.com?subject=SMM%20Service%20Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20Social%20Media%20Marketing%20services.%20My%20brand%20is%20..." 
-                id="contact-form"
-                className="inline-block px-8 py-4 text-xl font-bold  text-white bg-[#3B82F6] 
-                            transition duration-300 hover:bg-blue-600 shadow-lg"
-                
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                REQUEST A FREE AUDIT
-            </motion.a> 
+               <InlineContactForm targetEmail="webvisionsoftech@gmail.com" />
         </div>
     </section>
 );

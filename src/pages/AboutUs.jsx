@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Aboutus from '../components/About';
 import TeamSection from '../components/TeamSection';
+import { Link } from 'react-router';
 
 // --- Helper Components: Icons ---
 const ArrowRightIcon = () => (
@@ -84,7 +85,7 @@ const AboutUs = () => (
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Get Started
+                           <Link to="/contact"> Get Started </Link>
                             <ArrowRightIcon />
                         </motion.button>
                         <motion.button
@@ -92,7 +93,7 @@ const AboutUs = () => (
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            Our Services
+                           <Link to="/service"> Our Services </Link>
                         </motion.button>
                     </motion.div>
                 </div>

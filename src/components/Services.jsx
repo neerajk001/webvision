@@ -1,157 +1,186 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from "react-router-dom";
+import { 
+  Code, Layout, Cloud, TrendingUp, Settings, PenTool, ArrowRight 
+} from 'lucide-react';
 
-// --- Helper Components ---
-
-// Icon for the "Read More" link
-const ArrowRightIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-1 transition-transform duration-300 group-hover:translate-x-1">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-    </svg>
-);
-
-
-// --- Service Data ---
-// I've created a more detailed list of services and found relevant images.
+// Added Icons to the data for more visual impact
 const servicesList = [
     {
         title: 'Web & App Development',
+        icon: <Code className="w-6 h-6" />,
         description: 'Crafting responsive, high-performance websites and mobile applications tailored to your business needs.',
+        extendedDescription: 'Our development process includes full-stack solutions using React, Node.js, and modern mobile frameworks. We focus on scalability, security, and clean code architecture.',
         imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop',
         link: "/servicesPages/WebDevPage",
+        color: "blue"
     },
     {
         title: 'UI/UX Design',
+        icon: <Layout className="w-6 h-6" />,
         description: 'Designing intuitive, engaging, and user-centric interfaces that deliver a seamless user experience.',
+        extendedDescription: 'We perform deep user research and wireframing to build prototypes that convert. Our designs prioritize accessibility and emotional engagement.',
         imageUrl: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop',
         link: "/servicesPages/SoftDevPage",
+        color: "purple"
     },
     {
         title: 'Cloud Solutions',
+        icon: <Cloud className="w-6 h-6" />,
         description: 'Leveraging cloud infrastructure to provide scalable, secure, and cost-effective solutions for your business.',
+        extendedDescription: 'From AWS to Google Cloud, we manage your migration and infrastructure. We implement CI/CD pipelines and auto-scaling to ensure 99.9% uptime.',
         imageUrl: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?q=80&w=2070&auto=format&fit=crop',
         link: "/servicesPages/ERPCrmPage",
+        color: "cyan"
     },
     {
         title: 'Digital Marketing',
+        icon: <TrendingUp className="w-6 h-6" />,
         description: 'Boosting your online presence with data-driven marketing strategies, from SEO to social media campaigns.',
+        extendedDescription: 'Our marketing experts use AI-driven analytics to target your ideal audience. We specialize in high-ROI PPC campaigns and organic SEO growth.',
         imageUrl: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop',
         link: "/servicesPages/SeoPage",
+        color: "orange"
     },
     {
         title: 'Software Maintenance',
+        icon: <Settings className="w-6 h-6" />,
         description: 'Ensuring your applications run smoothly with proactive maintenance, updates, and dedicated support.',
+        extendedDescription: 'We provide 24/7 monitoring, security patching, and performance tuning. Our team ensures legacy systems stay compatible with modern standards.',
         imageUrl: 'https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=2070&auto=format&fit=crop',
         link: "/servicesPages/SoftDevPage",
+        color: "green"
     },
     {
         title: 'Branding & Identity',
+        icon: <PenTool className="w-6 h-6" />,
         description: 'Building a strong brand identity with memorable logos, style guides, and compelling brand narratives.',
+        extendedDescription: 'We define your brand DNA. This includes visual identity systems, typography, color palettes, and a unique voice that resonates.',
         imageUrl: 'https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=2070&auto=format&fit=crop',
         link: "/servicesPages/SmmPage",
+        color: "pink"
     },
 ];
 
-// --- Animation Variants for Framer Motion ---
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1, // Stagger the animation of children
-        },
-    },
-};
-
-const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            type: 'spring',
-            stiffness: 100,
-            damping: 10,
-        },
-    },
-};
-
-
-/**
- * Services Component
- * A sleek, modern section to showcase business services.
- */
 const Services = () => {
+    const [expandedIndex, setExpandedIndex] = useState(null);
+
+    const toggleExpand = (e, index) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setExpandedIndex(expandedIndex === index ? null : index);
+    };
+
     return (
-        <section className="bg-gray-50 py-16 sm:py-20 px-4">
-            <div className="max-w-7xl mx-auto">
+        <section className="relative bg-slate-50 py-24 px-4 overflow-hidden">
+            {/* Background Decorative Circles */}
+            <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-100/50 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: -20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                    className="text-center mb-12 md:mb-16"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-20"
                 >
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
-                        Our Services
+                    <motion.span 
+                        className="text-blue-600 font-bold tracking-widest uppercase text-sm"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        Expertise
+                    </motion.span>
+                    <h2 className="text-4xl md:text-5xl font-black text-slate-900 mt-2 mb-4">
+                        Innovative Solutions
                     </h2>
-                    <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                        We offer a wide range of services to help your business grow and succeed in the digital world.
+                    <div className="h-1.5 w-24 bg-blue-600 mx-auto rounded-full mb-6" />
+                    <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+                        Empowering businesses with cutting-edge technology and strategic digital transformation.
                     </p>
                 </motion.div>
 
                 {/* Services Grid */}
-                <motion.div
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {servicesList.map((service, index) => (
-                                 <Link
-                      to={service.link}
-                      key={index}
-                      className="
-                        no-underline
-                      "
-                    >
                         <motion.div
                             key={index}
-                            className="group bg-white  overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col"
-                            variants={cardVariants}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
                         >
-                            {/* Image Container */}
-                            <div className="h-48 overflow-hidden">
-                                <img
-                                    src={service.imageUrl}
-                                    alt={`${service.title} illustration`}
-                                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-                                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e5e7eb/4b5563?text=Image'; }}
-                                />
-                            </div>
-
-                            {/* Content */}
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-gray-800 mb-2">
-                                    {service.title}
-                                </h3>
-                                <p className="text-gray-600 text-sm mb-4 flex-grow">
-                                    {service.description}
-                                </p> 
-                                <span
-                                    href="#"
-                                    className="text-blue-600 hover:text-blue-700 text-sm font-semibold mt-auto inline-flex items-center group"
+                            <Link to={service.link} className="block group h-full">
+                                <motion.div
+                                    whileHover={{ y: -10 }}
+                                    className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] transition-all duration-500 border border-slate-100 h-full flex flex-col"
                                 >
-                                    Read More
-                                    <ArrowRightIcon />
-                                </span>
-                            </div>
-                        </motion.div></Link>
+                                    {/* Image Section with Overlay */}
+                                    <div className="h-56 relative overflow-hidden">
+                                        <img
+                                            src={service.imageUrl}
+                                            alt={service.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
+                                        
+                                        {/* Icon Badge */}
+                                        <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 text-white shadow-xl">
+                                            {service.icon}
+                                        </div>
+                                    </div>
+
+                                    {/* Content Section */}
+                                    <div className="p-8 flex flex-col flex-grow">
+                                        <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-slate-600 leading-relaxed mb-6">
+                                            {service.description}
+                                        </p>
+
+                                        {/* Expandable Info */}
+                                        <AnimatePresence>
+                                            {expandedIndex === index && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    className="overflow-hidden border-t border-slate-100 mt-2 mb-4 pt-4"
+                                                >
+                                                    <p className="text-slate-500 text-sm italic leading-relaxed">
+                                                        {service.extendedDescription}
+                                                    </p>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+
+                                        {/* Interaction Bar */}
+                                        <div className="mt-auto flex items-center justify-between">
+                                            <button
+                                                onClick={(e) => toggleExpand(e, index)}
+                                                className="flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-blue-600 transition-colors"
+                                            >
+                                                <span className="bg-slate-100 p-1 rounded-full">
+                                                    <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${expandedIndex === index ? 'rotate-90' : ''}`} />
+                                                </span>
+                                                {expandedIndex === index ? "LESS" : "DETAILS"}
+                                            </button>
+
+                                            <span className="text-blue-600 font-black text-xs tracking-tighter opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-300">
+                                                VIEW CASE STUDY
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </Link>
+                        </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

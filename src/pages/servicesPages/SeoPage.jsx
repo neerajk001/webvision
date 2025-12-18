@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import { motion } from "framer-motion";
+import InlineContactForm from "../../components/InlineContactForm";
 import { 
     Search, Target, TrendingUp, Zap, Smartphone, Monitor as Laptop, DollarSign, Shield,
     Link, Code, Users, Globe , Check, Phone, Mail, Monitor as LaptopIcon // Using Monitor as LaptopIcon for clarity
@@ -365,17 +366,7 @@ const SeoPage = () => {
                         Contact us now to get your free SEO audit and consultation.
                     </p>
                     {/* Updated CTA button */}
-                    <motion.a 
-                        href="mailto:webvisionsoftech@gmail.com?subject=SEO%20Service%20Inquiry%20from%20Website&body=Hello%2C%20I%20am%20interested%20in%20your%20SEO%20and%20Mobile%20Development%20services.%20My%20name%20is%20..." 
-                        
-                        className="inline-block px-8 py-4 text-xl font-bold rounded-full text-white bg-[#3B82F6] 
-                                transition duration-300 hover:bg-500 shadow-lg"
-                        
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        INITIATE EMAIL (Open Mail Client)
-                    </motion.a> 
+                       <InlineContactForm targetEmail="webvisionsoftech@gmail.com" /> 
                 </div>
             </section>
             

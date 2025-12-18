@@ -1,199 +1,128 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Globe, Layout, Cpu, ShoppingBag, Smartphone, Search, Monitor } from 'lucide-react';
 
-// --- Helper Components ---
-
-// Icon for the "View Project" link
-const ArrowUpRightIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 ml-1 group-hover:translate-x-0.5 transition-transform duration-200">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-    </svg>
-);
-
-// --- Portfolio Data with Local Images ---
 const portfolioItems = [
-    {
-        title: "Wood Oven Pizza",
-        category: "Website",
-        description: "A delicious-looking website for a local pizzeria, focusing on online ordering and table reservations.",
-        techStack: ["React", "TailwindCSS", "Firebase"],
-        link: "#",
-        image: "/portfolio/wood-oven.png", // Updated path
-        color: "blue"
-    },
-    {
-        title: "Next Packaging",
-        category: "Branding",
-        description: "A complete branding and web solution for an industrial packaging company, enhancing their market presence.",
-        techStack: ["Figma", "Next.js", "Vercel"],
-        link: "#",
-        image: "/portfolio/nextpack.png", // Updated path
-        color: "purple"
-    },
-    {
-        title: "Fast Quotation",
-        category: "SaaS",
-        description: "A robust SaaS platform for businesses to quickly generate and manage quotations and invoices.",
-        techStack: ["React", "Node.js", "MongoDB"],
-        link: "#",
-        image: "/portfolio/fast-qoutation.png", // Updated path
-        color: "green"
-    },
-    {
-        title: "Sun Shine Elevators",
-        category: "Website",
-        description: "A professional corporate website to showcase elevator products and generate business leads.",
-        techStack: ["HTML5", "CSS3", "JavaScript"],
-        link: "#",
-        image: "/portfolio/sunshine.png", // Updated path
-        color: "blue"
-    },
-    {
-        title: "ONXT Learning",
-        category: "SaaS",
-        description: "A comprehensive e-learning platform connecting students with courses and educational resources.",
-        techStack: ["Vue.js", "Django", "PostgreSQL"],
-        link: "#",
-        image: "/portfolio/onxt.png", // Updated path
-        color: "green"
-    },
-    {
-        title: "Shubham Enterprises",
-        category: "E-Commerce",
-        description: "A full-featured e-commerce store for a growing enterprise, with a custom backend and payment integration.",
-        techStack: ["Shopify", "Liquid", "GraphQL"],
-        link: "#",
-        image: "/portfolio/shubham.png", // Updated path
-        color: "pink"
-    },
-    {
-        title: "Weblord",
-        category: "Website",
-        description: "A modern, animated portfolio website designed to showcase web development projects.",
-        techStack: ["Next.js", "TailwindCSS", "Framer Motion"],
-        link: "#",
-        image: "/portfolio/weblord.png", // Added new item
-        color: "blue"
-    },
-    {
-        title: "Preeti Plastic",
-        category: "Branding",
-        description: "Corporate identity and website for a plastic manufacturing company.",
-        techStack: ["Figma", "WordPress", "PHP"],
-        link: "#",
-        image: "/portfolio/preeti-plastic.png", // Added new item
-        color: "purple"
-    }
+    { title: "Wood Oven Pizza", category: "Website", icon: <Globe size={18} />, description: "Premium digital experience for a traditional pizzeria with custom reservations.", techStack: ["React", "Firebase"], link: "#", image: "/portfolio/wood-oven.png" },
+    { title: "Next Packaging", category: "Branding", icon: <Cpu size={18} />, description: "Industrial corporate identity and portal for global logistics.", techStack: ["Next.js", "Figma"], link: "#", image: "/portfolio/nextpack.png" },
+    { title: "Fast Quotation", category: "SaaS", icon: <Layout size={18} />, description: "B2B dashboard for instantaneous quotation and invoice generation.", techStack: ["Node.js", "MongoDB"], link: "#", image: "/portfolio/fast-qoutation.png" },
+    { title: "Sun Shine Elevators", category: "Website", icon: <Monitor size={18} />, description: "Corporate showcase for industrial elevator products and lead gen.", techStack: ["HTML5", "JS"], link: "#", image: "/portfolio/sunshine.png" },
+    { title: "ONXT Learning", category: "SaaS", icon: <Smartphone size={18} />, description: "Comprehensive e-learning ecosystem for students and tutors.", techStack: ["Vue.js", "Django"], link: "#", image: "/portfolio/onxt.png" },
+    { title: "Shubham Enterprises", category: "E-Commerce", icon: <ShoppingBag size={18} />, description: "Massive scale store with custom backend and payment gateways.", techStack: ["Shopify", "GraphQL"], link: "#", image: "/portfolio/shubham.png" },
+    { title: "Weblord", category: "Website", icon: <Globe size={18} />, description: "Modern, animated portfolio designed for high-end web showcases.", techStack: ["Framer Motion"], link: "#", image: "/portfolio/weblord.png" },
+    { title: "Preeti Plastic", category: "Branding", icon: <Search size={18} />, description: "Corporate identity for a major manufacturing firm.", techStack: ["WordPress", "PHP"], link: "#", image: "/portfolio/preeti-plastic.png" }
 ];
 
+const categories = ["All", "Website", "Branding", "SaaS", "E-Commerce"];
 
-const categories = ["All", ...new Set(portfolioItems.map(item => item.category))];
-const categoryColors = {
-    "Website": "blue",
-    "Branding": "purple",
-    "SaaS": "green",
-    "E-Commerce": "pink",
-};
-
-// --- Components ---
-
-/**
- * PortfolioCard Component
- * Displays a single portfolio item with an auto-scrolling image on hover.
- */
-const PortfolioCard = ({ item }) => {
-    const accentColor = categoryColors[item.category] || 'gray';
-
+const PortfolioCard = ({ item, index }) => {
     return (
         <motion.div
-            className={`group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col border-b-4 border-${accentColor}-500`}
             layout
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ delay: index * 0.05 }}
+            className="group relative bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-500"
         >
-            {/* Image container with fixed height and overflow hidden */}
-            <div className="relative h-56 overflow-hidden">
-                <img
+            {/* Image Preview with Auto-Scroll on Hover */}
+            <div className="relative h-60 overflow-hidden bg-slate-50">
+                <motion.img
                     src={item.image}
-                    alt={`${item.title} screenshot`}
-                    className="absolute inset-0 w-full h-auto object-cover object-top transition-transform duration-[9000ms] ease-in-out group-hover:-translate-y-[calc(100%-14rem)]" // 14rem is h-56
-                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/e5e7eb/4b5563?text=Project+Image'; }}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-auto object-cover object-top transition-transform duration-[7000ms] ease-in-out group-hover:-translate-y-[calc(100%-15rem)]"
+                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x800/6366f1/ffffff?text=Project+Preview'; }}
                 />
-                 <div 
-                    className={`absolute inset-0 bg-gradient-to-t from-black/50 to-transparent`}
-                />
+                <div className="absolute top-4 left-4 z-10 flex gap-2">
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-black uppercase text-slate-800 shadow-sm">
+                        {item.icon} {item.category}
+                    </span>
+                </div>
             </div>
-            
-            <div className="p-6 flex-grow flex flex-col">
-                <p className={`text-sm text-${accentColor}-600 font-semibold mb-1`}>{item.category}</p>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm mb-4 flex-grow">{item.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+
+            {/* Content Section */}
+            <div className="p-6">
+                <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    {item.title}
+                </h3>
+                <p className="text-slate-500 text-xs leading-relaxed mb-4 line-clamp-2">
+                    {item.description}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-1.5 mb-6">
                     {item.techStack.map(tech => (
-                        <span key={tech} className={`bg-${accentColor}-100 text-${accentColor}-800 text-xs font-medium px-2.5 py-1 rounded-full`}>{tech}</span>
+                        <span key={tech} className="px-2 py-0.5 bg-slate-50 text-slate-400 text-[9px] font-bold uppercase rounded border border-slate-100">
+                            {tech}
+                        </span>
                     ))}
                 </div>
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className={`text-${accentColor}-600 hover:text-${accentColor}-700 text-sm font-semibold mt-auto inline-flex items-center`}>
-                    View Project
-                    <ArrowUpRightIcon />
-                </a>
+
+                {/* Project Link */}
+                <motion.a 
+                    href={item.link}
+                    whileHover={{ x: 5 }}
+                    className="inline-flex items-center gap-2 text-blue-600 font-black text-xs uppercase tracking-tight"
+                >
+                    View Project <ExternalLink size={14} />
+                </motion.a>
             </div>
         </motion.div>
     );
 };
 
-
-/**
- * Portfolio Component
- * The main container for showcasing all portfolio projects with filters.
- */
 const Portfolio = () => {
-    const [activeFilter, setActiveFilter] = useState("All");
-
-    const filteredItems = activeFilter === "All"
-        ? portfolioItems
-        : portfolioItems.filter(item => item.category === activeFilter);
+    const [filter, setFilter] = useState("All");
+    const filteredItems = filter === "All" ? portfolioItems : portfolioItems.filter(i => i.category === filter);
 
     return (
-        <div className="bg-gray-50 text-gray-800 min-h-screen p-4 sm:p-8 md:p-12" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dbeafe' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`}}>
+        <section className="bg-[#F8FAFC] py-24 px-6 min-h-screen">
             <div className="max-w-7xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    className="text-center mb-12"
-                >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">Our Portfolio</h1>
-                    <p className="text-lg text-gray-500">Explore a curated selection of our finest work.</p>
-                </motion.div>
+                
+                {/* --- Animated Header --- */}
+                <div className="text-center mb-16">
+                    <motion.h1 
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-6xl font-black text-slate-900 mb-4"
+                    >
+                        Our Recent <span className="text-blue-600">Work</span>
+                    </motion.h1>
+                    <p className="text-slate-500 max-w-xl mx-auto text-lg">
+                        Innovative solutions delivered across 8+ specialized industries.
+                    </p>
+                </div>
 
-                <div className="flex justify-center flex-wrap gap-3 mb-12">
-                    {categories.map(category => (
+                {/* --- Filter Bar --- */}
+                <div className="flex justify-center flex-wrap gap-2 mb-16">
+                    {categories.map(cat => (
                         <button
-                            key={category}
-                            onClick={() => setActiveFilter(category)}
-                            className={`px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 transform hover:scale-105 ${
-                                activeFilter === category
-                                    ? 'bg-blue-600 text-white shadow-lg'
-                                    : 'bg-white text-gray-700 shadow-md hover:bg-gray-200'
+                            key={cat}
+                            onClick={() => setFilter(cat)}
+                            className={`px-6 py-2 rounded-full text-xs font-bold transition-all ${
+                                filter === cat 
+                                ? 'bg-blue-600 text-white shadow-lg' 
+                                : 'bg-white text-slate-500 hover:bg-slate-50'
                             }`}
                         >
-                            {category}
+                            {cat}
                         </button>
                     ))}
                 </div>
 
-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <AnimatePresence>
-                        {filteredItems.map((item) => (
-                            <PortfolioCard key={item.title} item={item} />
+                {/* --- Multi-Card Grid --- */}
+                <motion.div 
+                    layout
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    <AnimatePresence mode="popLayout">
+                        {filteredItems.map((item, index) => (
+                            <PortfolioCard key={item.title} item={item} index={index} />
                         ))}
                     </AnimatePresence>
                 </motion.div>
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -1,62 +1,45 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+// Fixed the icon imports to match the usage below
+import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle } from 'lucide-react';
 
-// --- (Keep all Icon and ContactInfoCard components from the previous answer) ---
+// --- Constants ---
+const PRIMARY_EMAIL = "webvisionsoftech@gmail.com";
+const SECONDARY_EMAIL = "info@webvisionsoftech.com";
+const PHONE = "+91 9322347666";
+const ADDRESS = "224/A, B4, 2nd Floor, Vishwakarma Paradise, Phase-1, Ambadi Rd, Vasai West, Palghar, Maharashtra 401202";
 
-const MailIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-);
-
-const LocationIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-);
-
-const PhoneIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-);
-
-const ContactInfoCard = ({ icon, title, lines, link }) => (
+const ContactInfoCard = ({ icon: Icon, title, lines, link }) => (
     <motion.a
         href={link}
-        target="_blank" 
+        target="_blank"
         rel="noopener noreferrer"
-        className="block bg-white p-8 rounded-xl shadow-lg text-center flex flex-col items-center cursor-pointer"
-        whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
-        variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 }
-        }}
+        className="group bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center text-center transition-all duration-300 hover:shadow-xl"
+        whileHover={{ y: -10 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
     >
-        <div className="bg-blue-100 text-blue-600 rounded-full p-4 mb-4">
-            {icon}
+        <div className="bg-blue-50 text-blue-600 rounded-2xl p-4 mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+            <Icon size={28} />
         </div>
-        <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
-        <div className="text-gray-600">
+        <h3 className="text-xl font-bold text-slate-800 mb-3">{title}</h3>
+        <div className="text-slate-500 space-y-1 text-sm leading-relaxed">
             {lines.map((line, index) => (
-                <span key={index} className="block">{line}</span> 
+                <span key={index} className="block">{line}</span>
             ))}
         </div>
     </motion.a>
 );
 
-/**
- * ContactForm Component - MAJORLY MODIFIED
- * Now uses state to capture inputs and constructs a Gmail URL on submit.
- */
-const ContactForm = ({ targetEmail }) => {
+const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         subject: '',
         message: ''
     });
+    const [status, setStatus] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -64,201 +47,181 @@ const ContactForm = ({ targetEmail }) => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Stop default form submission
-
+        e.preventDefault();
         const { name, email, subject, message } = formData;
+        const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${PRIMARY_EMAIL}&cc=${SECONDARY_EMAIL}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
         
-        // 1. Construct the email body
-        const emailBody = `
-Dear Team,
-
-My name is ${name}.
-My contact email is ${email}.
-
-${message}
-
----
-Sent via the website contact form.
-        `.trim();
-
-        // 2. Encode the URL parameters
-        const encodedSubject = encodeURIComponent(subject);
-        const encodedBody = encodeURIComponent(emailBody);
-
-        // 3. Build the final Gmail URL
-        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}&su=${encodedSubject}&body=${encodedBody}`;
-
-        // 4. Open the link
         window.open(gmailUrl, '_blank');
-        
-        // Optional: Clear form data after opening the email client
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setStatus(true);
+        setTimeout(() => setStatus(false), 5000);
     };
 
     return (
-        <div className="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Get In Touch With Us</h2>
-            <p className="text-gray-500 mb-8">For More Details Please Visit. Monday to Saturday 10am to 7pm</p>
-            
-            {/* The onSubmit handler triggers the custom function */}
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input 
-                        type="text" 
-                        name="name" // Added name attribute
-                        placeholder="Your Name" 
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                    />
-                    <input 
-                        type="email" 
-                        name="email" // Added name attribute
-                        placeholder="Your Email" 
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                    />
+        <div className="bg-[#FBFDFF] min-h-screen font-sans">
+            {/* --- Header Section --- */}
+            <div className="relative bg-slate-900 pt-32 pb-40 px-6">
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
                 </div>
-                <div>
-                    <input 
-                        type="text" 
-                        name="subject" // Added name attribute
-                        placeholder="Subject" 
-                        value={formData.subject}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                    />
-                </div>
-                <div>
-                    <textarea 
-                        name="message" // Added name attribute
-                        placeholder="Your Message" 
-                        rows="5" 
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        className="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    ></textarea>
-                </div>
-                <div>
-                    <motion.button
-                        type="submit" // Must be type="submit" to trigger the form's onSubmit
-                        className="w-full bg-blue-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        Send Message via Email
-                    </motion.button>
-                </div>
-            </form>
-        </div>
-    );
-};
-
-
-/**
- * ContactPage Component - Sligthly Modified to pass targetEmail prop
- */
-const Contact = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 }
-        }
-    };
-
-    const primaryEmail = "webvisionsoftech@gmail.com"; 
-    const secondaryEmail = "info@webvisionsoftech.com";
-    const primaryPhone = "+919322347666"; 
-    const addressLines = [
-        "224/A,B4, 2nd Floor, Vishwakarma",
-        "Paradise, Phase -1, Ambadi Rd, Sai Nagar,",
-        "Vasai West, Palghar, Vasai-Virar, Maharashtra 401202"
-    ];
-
-    // Card Links (Same as before)
-    const mailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${primaryEmail}&cc=${secondaryEmail}&su=Inquiry%20from%20Website`;
-    const mapQuery = encodeURIComponent(addressLines.join(', '));
-    const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
-    const whatsappLink = `https://wa.me/${primaryPhone.replace(/[^0-9]/g, '')}`; 
-
-    return (
-        <div className="bg-gray-50 min-h-screen">
-            {/* Header Section (omitted for brevity) */}
-            <div className="bg-white pt-24 pb-12">
-                 <motion.div
-                    className="text-center"
-                    initial={{ opacity: 0, y: -30 }}
+                
+                <motion.div 
+                    className="relative z-10 max-w-4xl mx-auto text-center"
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
                 >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">Contact Us</h1>
-                    <p className="text-lg text-gray-500 mt-2">Home / Contact Us</p>
+                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6">Let's Design Your <span className="text-blue-400">Digital Future</span></h1>
+                    <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
+                        Whether you have a question about features, pricing, or anything else, our team is ready to answer.
+                    </p>
                 </motion.div>
             </div>
 
-            {/* Contact Cards Section (Same as before) */}
-            <div className="py-16 md:py-24">
-                <motion.div
-                    className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                >
+            {/* --- Info Cards --- */}
+            <div className="max-w-7xl mx-auto px-6 -mt-20 relative z-20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Fixed the icon names here to match imports */}
                     <ContactInfoCard 
-                        icon={<MailIcon />} 
-                        title="Mail Here" 
-                        lines={["info@webvisionsoftech.com", "webvisionsoftech@gmail.com"]}
-                        link={mailLink} 
+                        icon={Mail} 
+                        title="Email Us" 
+                        lines={[PRIMARY_EMAIL, SECONDARY_EMAIL]} 
+                        link={`mailto:${PRIMARY_EMAIL}`}
                     />
                     <ContactInfoCard 
-                        icon={<LocationIcon />} 
-                        title="Visit Here" 
-                        lines={addressLines}
-                        link={mapLink} 
+                        icon={MapPin} 
+                        title="Visit Us" 
+                        lines={["Vasai West, Palghar", "Maharashtra, India"]} 
+                        link="https://www.google.com/maps/dir//Webvision+Softech+Pvt+Ltd"
                     />
                     <ContactInfoCard 
-                        icon={<PhoneIcon />} 
-                        title="Call Here / WhatsApp" 
-                        lines={["+91 9322347666", "+91 8422014356"]} 
-                        link={whatsappLink} 
+                        icon={Phone} 
+                        title="Call Us" 
+                        lines={[PHONE, "+91 8422014356"]} 
+                        link={`tel:${PHONE.replace(/\s/g, '')}`}
                     />
-                </motion.div>
+                </div>
             </div>
 
-            {/* Form & Map Section */}
-            <div className="pb-16 md:pb-24">
-                <motion.div
-                    className="container mx-auto px-6"
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    {/* Passed the target email as a prop */}
-                    <ContactForm targetEmail={primaryEmail} /> 
+            {/* --- Main Section --- */}
+            <div className="max-w-7xl mx-auto px-6 py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    
+                    {/* Form Side */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.1)] border border-slate-50"
+                    >
+                        <h2 className="text-3xl font-black text-slate-900 mb-2">Send a Message</h2>
+                        <p className="text-slate-500 mb-8 font-medium">We'll get back to you within 24 hours.</p>
+                        
+                        <form onSubmit={handleSubmit} className="space-y-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <input 
+                                    name="name"
+                                    type="text" 
+                                    placeholder="Name" 
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-4 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none"
+                                />
+                                <input 
+                                    name="email"
+                                    type="email" 
+                                    placeholder="Email" 
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="w-full p-4 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none"
+                                />
+                            </div>
+                            <input 
+                                name="subject"
+                                type="text" 
+                                placeholder="Subject" 
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
+                                className="w-full p-4 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none"
+                            />
+                            <textarea 
+                                name="message"
+                                placeholder="Message" 
+                                rows="5" 
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                                className="w-full p-4 bg-slate-50 border border-transparent rounded-2xl focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none resize-none"
+                            />
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                type="submit"
+                                className="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all flex items-center justify-center gap-3"
+                            >
+                                <Send size={20} />
+                                Launch Inquiry
+                            </motion.button>
+                        </form>
+                        
+                        <AnimatePresence>
+                            {status && (
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0 }}
+                                    className="mt-4 flex items-center justify-center gap-2 text-green-600 font-bold text-sm"
+                                >
+                                    <CheckCircle size={16} /> Opening your email client...
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
 
-                    {/* Embedded Map */}
-                     <div className="mt-16 rounded-xl shadow-2xl overflow-hidden">
-                         <iframe
-                            title="Web Vision Softech Pvt Ltd"
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8522578757097!2d72.82472579044662!3d19.383660527566988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af321745c20b%3A0x6f8f9c7094bbc71d!2sweb%20vision%20softech%20pvt%20ltd!5e0!3m2!1sen!2sin!4v1765956617200!5m2!1sen!2sin"
-                               width="100%"
-                             height="450"
-                             style={{ border: 0 }}
-                             allowFullScreen=""
-                             loading="lazy"
-                             referrerPolicy="no-referrer-when-downgrade"
-                         ></iframe>
-                    </div>  
+                    {/* Content/Map Side */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-10"
+                    >
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-bold">
+                                <Clock size={16} /> Hours: Mon - Sat (10 AM - 7 PM)
+                            </div>
+                            <h2 className="text-3xl font-black text-slate-900">Our Corporate Presence</h2>
+                            <p className="text-slate-500 leading-relaxed text-lg">
+                                Located in the heart of Vasai, we are perfectly positioned to serve businesses across Mumbai and globally.
+                            </p>
+                        </div>
 
-                </motion.div>
+                        <div className="rounded-[2rem] shadow-2xl overflow-hidden border-8 border-white h-[450px] relative">
+                            <iframe
+                                title="Office Location"
+                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5322.612127264186!2d72.82364939019739!3d19.384079976692455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af321745c20b%3A0x6f8f9c7094bbc71d!2sweb%20vision%20softech%20pvt%20ltd!5e0!3m2!1sen!2sin!4v1766052740519!5m2!1sen!2sin" 
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                            />  
+
+                            {/* <iframe 
+                            title="Office Location"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5322.612127264186!2d72.82364939019739!3d19.384079976692455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7af321745c20b%3A0x6f8f9c7094bbc71d!2sweb%20vision%20softech%20pvt%20ltd!5e0!3m2!1sen!2sin!4v1766052740519!5m2!1sen!2sin" 
+                            width="100%"
+                             height="100%" 
+                             style="border:0;" 
+                             allowfullscreen=""
+                              loading="lazy" 
+                              referrerpolicy="no-referrer-when-downgrade">
+                            </iframe> */}
+                        </div>
+                    </motion.div>
+
+                </div>
             </div>
         </div>
     );

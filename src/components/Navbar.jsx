@@ -34,7 +34,7 @@ const Navbar = () => {
       // --- CHANGE 1: Give the navbar a FIXED HEIGHT and standard padding ---
       // h-16 (4rem or 64px) sets a consistent height.
       // The logo will now overflow this height.
-      className="sticky top-0 z-50 h-16 bg-white/80 backdrop-blur-lg shadow-md px-6 flex justify-between items-center transition duration-300"
+      className="sticky top-0  z-50 h-16 bg-white/80 backdrop-blur-lg shadow-md px-6 flex justify-between items-center transition duration-300"
     >
       {/* Logo */}
       {/* --- CHANGE 2: The logo wrapper is back to being a simple flex item --- */}
