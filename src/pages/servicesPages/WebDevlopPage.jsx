@@ -578,7 +578,7 @@ const PricingSection = () => (
                           "
             >
               <a
-                href="#contact-form"
+                href="/contact"
                 className={`
                                 block
                                 w-full

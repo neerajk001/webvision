@@ -272,7 +272,7 @@ const PricingSection = () => (
                         {/* CTA Button */}
                         <div className="mt-8">
                             <a 
-                                href="#contact-form" 
+                                href="/contact" 
                                 className={`block w-full text-center py-3 rounded-lg font-semibold transition duration-300 
                                             bg-[#3B82F6] text-white hover:bg-blue-600 shadow-md`}
                             >

@@ -159,7 +159,7 @@ const PricingSection = () => (
                         {/* CTA Button Placeholder */}
                         <div className="mt-8">
                             <a 
-                                href="#contact-form" 
+                                href="/contact" 
                                 className={`block w-full text-center py-3 rounded-lg font-semibold transition duration-300 
                                             ${plan.accent.includes('#FF8C00') ? 'bg-[#3B82F6] text-white hover:blue-500' : 'bg-gray-200 text-[#1F2937] hover:bg-blue-500'}`}
                             >
