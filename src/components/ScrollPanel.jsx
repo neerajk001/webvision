@@ -27,25 +27,29 @@ export default function ScrollPanel() {
       id: 'whatsapp',
       icon: <WhatsAppIcon />,
       bgColor: 'bg-green-500',
-      href: 'https://wa.me/+91 9322347666 ', // Replace with your WhatsApp number
+      href: 'https://wa.me/+919322347666', // Fixed whitespace in link
+      label: 'Chat on WhatsApp',
     },
     {
       id: 'phone',
       icon: <Phone />,
       bgColor: 'bg-blue-500',
-      href: 'tel:+91 9322347666 ', // Replace with your phone number
+      href: 'tel:+919322347666', // Fixed whitespace in link
+      label: 'Call Us',
     },
     {
       id: 'location',
       icon: <MapPin />,
       bgColor: 'bg-indigo-600',
-      href: 'https://www.google.com/maps/place/Webvision+Softech+Pvt+Ltd/@19.380503,72.833471,17z/data=!4m5!3m4!1s0x0:0x6f8f9c7094bbc71d!8m2!3d19.3805025!4d72.8334713?hl=en', // Replace with your location
+      href: 'https://www.google.com/maps/place/Webvision+Softech+Pvt+Ltd/@19.380503,72.833471,17z/data=!4m5!3m4!1s0x0:0x6f8f9c7094bbc71d!8m2!3d19.3805025!4d72.8334713?hl=en',
+      label: 'Visit our Location',
     },
     {
       id: 'facebook',
       icon: <Facebook />,
       bgColor: 'bg-sky-500',
-      href: 'http://facebook.com/people/Webvision-Softech-Pvt-Ltd/100054232521328/#', // Replace with your Facebook profile
+      href: 'http://facebook.com/people/Webvision-Softech-Pvt-Ltd/100054232521328/#',
+      label: 'Visit our Facebook Page',
     },
   ];
 
@@ -76,7 +80,7 @@ export default function ScrollPanel() {
       },
     },
   };
-  
+
   // Hover animation for each icon
   const hoverEffect = {
     scale: 1.2,
@@ -98,6 +102,7 @@ export default function ScrollPanel() {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={link.label}
           className={`w-12 h-12 flex items-center justify-center text-white rounded-lg cursor-pointer ${link.bgColor}`}
           variants={itemVariants}
           whileHover={hoverEffect}

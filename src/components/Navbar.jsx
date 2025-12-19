@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
@@ -11,12 +11,12 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
-    { name: 'Services', path: '/service' },
+    { name: 'Services', path: '/services' },
     { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Our Product', path: '/product' },
-    { name: 'Client', path: '/client' },
+    { name: 'Our Product', path: '/products' },
+    { name: 'Client', path: '/clients' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Term', path: 'TermsPage' },
+    { name: 'Term', path: '/terms' },
   ];
 
   const handleNavigation = (path) => {
@@ -43,28 +43,32 @@ const Navbar = () => {
           // --- CHANGE 3: Make the logo TALLER than the navbar's height ---
           // h-24 (6rem or 96px) is taller than the nav's h-16.
           // You can adjust this value freely.
-          className="h-18 w-auto" 
+          className="h-18 w-auto"
           src="/image.png"
-          alt="Company Logo" 
+          alt="Company Logo"
+          loading="lazy"
         />
       </div>
 
       {/* Desktop Menu (No changes needed) */}
       <div className="hidden md:flex space-x-3">
         {navLinks.map((link, index) => (
-          <motion.button
+          <Link
             key={index}
-            onClick={() => handleNavigation(link.path)}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.05 }}
-            className={`px-4 py-1 border rounded-full cursor-pointer text-sm font-medium transition-all duration-200 ${
-              location.pathname === link.path
+            to={link.path}
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              className={`px-4 py-1 border rounded-full cursor-pointer text-sm font-medium transition-all duration-200 ${location.pathname === link.path
                 ? 'bg-black text-white shadow-md'
                 : 'text-black border-black hover:bg-gray-100'
-            }`}
-          >
-            {link.name}
-          </motion.button>
+                }`}
+            >
+              {link.name}
+            </motion.div>
+          </Link>
         ))}
       </div>
 
@@ -83,18 +87,22 @@ const Navbar = () => {
           className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-center space-y-2 py-4 md:hidden z-50"
         >
           {navLinks.map((link, index) => (
-            <motion.button
+            <Link
               key={index}
-              onClick={() => handleNavigation(link.path)}
-              whileTap={{ scale: 0.95 }}
-              className={`w-11/12 py-2 border rounded-full text-sm font-medium transition-all duration-200 ${
-                location.pathname === link.path
+              to={link.path}
+              className="w-full flex justify-center"
+              onClick={() => setIsOpen(false)}
+            >
+              <motion.div
+                whileTap={{ scale: 0.95 }}
+                className={`w-11/12 py-2 border rounded-full text-center text-sm font-medium transition-all duration-200 ${location.pathname === link.path
                   ? 'bg-black text-white shadow'
                   : 'text-black border-black hover:bg-gray-100'
-              }`}
-            >
-              {link.name}
-            </motion.button>
+                  }`}
+              >
+                {link.name}
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       )}

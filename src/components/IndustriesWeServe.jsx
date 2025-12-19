@@ -46,14 +46,14 @@ const IndustriesWeServe = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* --- Header --- */}
         <div className="text-center mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="text-blue-600 font-bold tracking-[0.2em] text-sm uppercase mb-4 block"
           >
             Diverse Expertise
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-black text-slate-900 mb-6"
@@ -67,7 +67,8 @@ const IndustriesWeServe = () => {
         </div>
 
         {/* --- Industries Grid --- */}
-        <motion.div
+        {/* --- Industries Grid --- */}
+        <motion.ul
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -75,17 +76,17 @@ const IndustriesWeServe = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {industries.map((item, i) => (
-            <motion.div
+            <motion.li
               key={i}
               variants={itemVariants}
               whileHover={{ y: -10 }}
-              className="relative group bg-white/70 backdrop-blur-md border border-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] overflow-hidden"
+              className="relative group bg-white/70 backdrop-blur-md border border-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] overflow-hidden block"
             >
               {/* Card Hover Glow */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-3xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"></div>
+              <div aria-hidden="true" className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-3xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"></div>
 
               {/* Icon Circle */}
-              <div className="relative mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
+              <div aria-hidden="true" className="relative mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 shadow-inner">
                 {item.icon}
               </div>
 
@@ -100,10 +101,10 @@ const IndustriesWeServe = () => {
               </div>
 
               {/* Decorative Corner Accent */}
-              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-600/5 rounded-full group-hover:scale-[3] transition-transform duration-700"></div>
-            </motion.div>
+              <div aria-hidden="true" className="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-600/5 rounded-full group-hover:scale-[3] transition-transform duration-700"></div>
+            </motion.li>
           ))}
-        </motion.div>
+        </motion.ul>
       </div>
 
       {/* 🎨 Floating Gradient Blurs */}

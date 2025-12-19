@@ -18,6 +18,7 @@ import {
   Mail,
   TrendingUp,
 } from "lucide-react";
+import SEO from "../../components/SEO";
 
 import InlineContactForm from "../../components/InlineContactForm";
 
@@ -89,54 +90,54 @@ const HeroSection = () => (
     animate="visible"
     variants={containerVariants}
     className="
-        py-20 px-4
-        bg-white
-        sm:px-10
-      "
+      py-20 px-4
+      bg-white
+      sm:px-10
+    "
   >
     <div
       className="
-            grid grid-cols-1
-            max-w-7xl
-            mx-auto
-            gap-12 items-center
-            md:grid-cols-2
-          "
+        grid grid-cols-1
+        max-w-7xl
+        mx-auto
+        gap-12 items-center
+        md:grid-cols-2
+      "
     >
       {/* Left Part: Text and Heading (Software Dev Focus) */}
       <motion.div
         variants={itemVariants}
         className="
-                space-y-4
-              "
+          space-y-4
+        "
       >
         <h2
           className="
-                    text-sm font-semibold tracking-widest text-gray-500
-                    uppercase
-                  "
+            text-sm font-semibold tracking-widest text-gray-500
+            uppercase
+          "
         >
           Bespoke Digital Solutions
         </h2>
         <h1
           className="
-                    text-4xl font-extrabold leading-tight text-[#1F2937]
-                    md:text-5xl
-                  "
+            text-4xl font-extrabold leading-tight text-[#1F2937]
+            md:text-5xl
+          "
         >
           Custom Software: From{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             Strategy to Deployment
           </span>
         </h1>
         <p
           className="
-                    text-lg text-gray-600
-                  "
+            text-lg text-gray-600
+          "
         >
           We engineer high-performance, scalable, and secure software solutions
           tailored precisely to your unique business logic and operational
@@ -150,13 +151,13 @@ const HeroSection = () => (
           }}
           whileTap={{ scale: 0.95 }}
           className="
-                    inline-block
-                    mt-4 px-6 py-3
-                    text-white font-semibold
-                    bg-[#3B82F6]
-                    rounded-lg
-                    shadow-md
-                  "
+            inline-block
+            mt-4 px-6 py-3
+            text-white font-semibold
+            bg-[#3B82F6]
+            rounded-lg
+            shadow-md
+          "
         >
           Explore Our Methodology
         </motion.a>
@@ -168,25 +169,26 @@ const HeroSection = () => (
         whileHover={{ scale: 1.02, rotate: 0.5 }}
         transition={{ type: "spring", stiffness: 300 }}
         className="
-                flex
-                justify-center
-              "
+          flex
+          justify-center
+        "
       >
         <div
           className="
-                    flex
-                    w-full max-w-lg h-full
-                    items-center justify-center
-                  "
+            flex
+            w-full max-w-lg h-full
+            items-center justify-center
+          "
         >
           <img
             src="/images/app_development_code.jpg"
             alt="Software architecture diagram on a screen"
+            loading="lazy"
             className="
-                        w-full h-full
-                        rounded-xl border-4 border-[#3B82F6]
-                        shadow-2xl
-                      "
+              w-full h-full
+              rounded-xl border-4 border-[#3B82F6]
+              shadow-2xl
+            "
           />
         </div>
       </motion.div>
@@ -204,19 +206,19 @@ const MethodologySection = () => (
     viewport={{ once: true, amount: 0.4 }}
     variants={containerVariants}
     className="
-        py-20 px-4
-        bg-gray-50
-        sm:px-10
-      "
+      py-20 px-4
+      bg-gray-50
+      sm:px-10
+    "
   >
     <div
       className="
-            grid grid-cols-1
-            max-w-7xl
-            mx-auto
-            gap-12 items-center
-            md:grid-cols-2
-          "
+        grid grid-cols-1
+        max-w-7xl
+        mx-auto
+        gap-12 items-center
+        md:grid-cols-2
+      "
     >
       {/* Left Part: Image  */}
       <motion.div
@@ -224,19 +226,20 @@ const MethodologySection = () => (
         whileHover={{ scale: 1.02, rotate: -0.5 }}
         transition={{ type: "spring", stiffness: 300 }}
         className="
-                flex order-2
-                justify-center
-                md:order-1
-              "
+          flex order-2
+          justify-center
+          md:order-1
+        "
       >
         <img
           src="/images/app_analytics_dashboard.jpg"
           alt="DevOps Continuous Integration and Deployment pipeline"
+          loading="lazy"
           className="
-                    w-full max-w-md
-                    rounded-xl border-4 border-[#1F2937]
-                    shadow-2xl
-                  "
+            w-full max-w-md
+            rounded-xl border-4 border-[#1F2937]
+            shadow-2xl
+          "
         />
       </motion.div>
 
@@ -244,29 +247,29 @@ const MethodologySection = () => (
       <motion.div
         variants={itemVariants}
         className="
-                order-1
-                space-y-4
-                md:order-2
-              "
+          order-1
+          space-y-4
+          md:order-2
+        "
       >
         <h3
           className="
-                    text-4xl font-extrabold text-[#1F2937]
-                  "
+            text-4xl font-extrabold text-[#1F2937]
+          "
         >
           Agile Delivery &{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             Modern DevOps
           </span>
         </h3>
         <p
           className="
-                    text-lg text-gray-600
-                  "
+            text-lg text-gray-600
+          "
         >
           We adhere strictly to **Agile methodology**, ensuring transparency,
           flexibility, and continuous delivery. Our integrated **DevOps
@@ -275,10 +278,10 @@ const MethodologySection = () => (
         </p>
         <ul
           className="
-                    space-y-2 pl-4
-                    text-lg text-gray-600
-                    list-disc list-inside
-                  "
+            space-y-2 pl-4
+            text-lg text-gray-600
+            list-disc list-inside
+          "
         >
           <li>
             **Sprint Cycles:** Deliberate, predictable feature releases every
@@ -311,35 +314,35 @@ const PillarCard = ({ icon: Icon, title, description }) => (
     }}
     transition={{ type: "spring", stiffness: 300 }}
     className="
-        flex flex-col
-        h-full
-        p-6
-        text-center
-        bg-white
-        rounded-xl border border-gray-100
-        shadow-lg
-        items-center
-      "
+      flex flex-col
+      h-full
+      p-6
+      text-center
+      bg-white
+      rounded-xl border border-gray-100
+      shadow-lg
+      items-center
+    "
   >
     <Icon
       className="
-            w-10 h-10
-            mb-3
-            text-[#3B82F6]
-          "
+        w-10 h-10
+        mb-3
+        text-[#3B82F6]
+      "
     />
     <h4
       className="
-            mb-2
-            text-xl font-bold text-[#1F2937]
-          "
+        mb-2
+        text-xl font-bold text-[#1F2937]
+      "
     >
       {title}
     </h4>
     <p
       className="
-            text-sm text-gray-500
-          "
+        text-sm text-gray-500
+      "
     >
       {description}
     </p>
@@ -406,29 +409,29 @@ const CardGridSection = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
       className="
-            py-20 px-4
-            bg-gray-50
-            sm:px-10
-          "
+        py-20 px-4
+        bg-gray-50
+        sm:px-10
+      "
     >
       <div
         className="
-                max-w-7xl
-                mx-auto
-              "
+          max-w-7xl
+          mx-auto
+        "
       >
         <motion.h2
           variants={itemVariants}
           className="
-                    mb-12
-                    text-4xl font-extrabold text-[#1F2937] text-center
-                  "
+            mb-12
+            text-4xl font-extrabold text-[#1F2937] text-center
+          "
         >
           Our{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             End-to-End Development Pillars
           </span>
@@ -437,11 +440,11 @@ const CardGridSection = () => {
         <motion.div
           variants={containerVariants}
           className="
-                    grid grid-cols-1
-                    gap-8
-                    sm:grid-cols-2
-                    lg:grid-cols-4
-                  "
+            grid grid-cols-1
+            gap-8
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
         >
           {coreServices.map((pillar, index) => (
             <PillarCard key={index} {...pillar} />
@@ -462,29 +465,29 @@ const PricingSection = () => (
     viewport={{ once: true, amount: 0.2 }}
     variants={containerVariants}
     className="
-        py-24 px-4
-        bg-white
-        sm:px-10
-      "
+      py-24 px-4
+      bg-white
+      sm:px-10
+    "
   >
     <div
       className="
-            max-w-7xl
-            mx-auto
-          "
+        max-w-7xl
+        mx-auto
+      "
     >
       <h2
         className="
-                mb-16
-                text-4xl font-extrabold text-[#1F2937] text-center
-                md:text-5xl
-              "
+          mb-16
+          text-4xl font-extrabold text-[#1F2937] text-center
+          md:text-5xl
+        "
       >
         Software Development{" "}
         <span
           className="
-                    text-[#3B82F6]
-                  "
+            text-[#3B82F6]
+          "
         >
           Engagement Models
         </span>
@@ -493,10 +496,10 @@ const PricingSection = () => (
       <motion.div
         variants={containerVariants}
         className="
-                grid grid-cols-1
-                gap-8
-                md:grid-cols-3
-              "
+          grid grid-cols-1
+          gap-8
+          md:grid-cols-3
+        "
       >
         {pricingPlans.map((plan, index) => (
           <motion.div
@@ -508,42 +511,42 @@ const PricingSection = () => (
               boxShadow: `0px 15px 30px ${plan.shadow.split("/")[0].split("-")[1]}/80`,
             }}
             className={`
-                        flex flex-col
-                        p-8
-                        bg-white
-                        rounded-xl border-t-8 border-b-8
-                        shadow-xl
-                        transition duration-300
-                        ${plan.accent.replace("text", "border")}
-                        ${plan.shadow}
-                      `}
+              flex flex-col
+              p-8
+              bg-white
+              rounded-xl border-t-8 border-b-8
+              shadow-xl
+              transition duration-300
+              ${plan.accent.replace("text", "border")}
+              ${plan.shadow}
+            `}
           >
             {/* Header */}
             <div
               className="
-                            mb-6
-                            text-center
-                          "
+                mb-6
+                text-center
+              "
             >
               <plan.icon
                 className={`
-                                w-12 h-12
-                                mx-auto mb-3
-                                ${plan.accent}
-                              `}
+                  w-12 h-12
+                  mx-auto mb-3
+                  ${plan.accent}
+                `}
               />
               <h3
                 className="
-                                text-3xl font-bold text-[#1F2937]
-                              "
+                  text-3xl font-bold text-[#1F2937]
+                "
               >
                 {plan.title}
               </h3>
               <p
                 className="
-                                mt-1
-                                text-sm text-gray-500
-                              "
+                  mt-1
+                  text-sm text-gray-500
+                "
               >
                 {plan.subtitle}
               </p>
@@ -552,26 +555,26 @@ const PricingSection = () => (
             {/* Features List */}
             <ul
               className="
-                            flex-grow
-                            space-y-3
-                          "
+                flex-grow
+                space-y-3
+              "
             >
               {plan.features.map((feature, i) => (
                 <li
                   key={i}
                   className="
-                                    flex
-                                    text-gray-700
-                                    items-start
-                                  "
+                    flex
+                    text-gray-700
+                    items-start
+                  "
                 >
                   <Check
                     className={`
-                                        flex-shrink-0
-                                        w-5 h-5
-                                        mr-3
-                                        text-[#3B82F6]
-                                      `}
+                      flex-shrink-0
+                      w-5 h-5
+                      mr-3
+                      text-[#3B82F6]
+                    `}
                   />
                   <span>{feature}</span>
                 </li>
@@ -581,21 +584,21 @@ const PricingSection = () => (
             {/* CTA Button */}
             <div
               className="
-                            mt-8
-                          "
+                mt-8
+              "
             >
               <a
                 href="/contact"
                 className={`
-                                block
-                                w-full
-                                py-3
-                                text-center font-semibold text-white
-                                bg-[#3B82F6]
-                                rounded-lg
-                                shadow-md
-                                transition duration-300 hover:bg-blue-600
-                              `}
+                  block
+                  w-full
+                  py-3
+                  text-center font-semibold text-white
+                  bg-[#3B82F6]
+                  rounded-lg
+                  shadow-md
+                  transition duration-300 hover:bg-blue-600
+                `}
               >
                 Schedule Strategy Session
               </a>
@@ -613,35 +616,35 @@ const PricingSection = () => (
 const ContactSection = () => (
   <section
     className="
-        py-20 px-4
-        bg-gray-50
-        border-t border-gray-200
-        sm:px-10
-      "
+      py-20 px-4
+      bg-gray-50
+      border-t border-gray-200
+      sm:px-10
+    "
   >
     <div
       className="
-            max-w-3xl
-            mx-auto p-10
-            text-center
-            bg-white
-            rounded-xl
-            shadow-2xl
-          "
+        max-w-3xl
+        mx-auto p-10
+        text-center
+        bg-white
+        rounded-xl
+        shadow-2xl
+      "
     >
       <h2
         className="
-                mb-4
-                text-3xl font-bold text-[#1F2937]
-              "
+          mb-4
+          text-3xl font-bold text-[#1F2937]
+        "
       >
         Ready for Innovation?
       </h2>
       <p
         className="
-                mb-6
-                text-lg text-gray-600
-              "
+          mb-6
+          text-lg text-gray-600
+        "
       >
         Let’s build the next generation of software for your business. Start
         with a free consultation on architecture and feasibility.
@@ -659,11 +662,16 @@ const SoftDevPage = () => {
   return (
     <div
       className="
-            min-h-screen
-            text-[#1F2937] font-sans
-            bg-white
-          "
+        min-h-screen
+        text-[#1F2937] font-sans
+        bg-white
+      "
     >
+      <SEO
+        title="Software Development"
+        description="Custom software development services for enterprises and startups by Webvision Infotech."
+        url="/services/software-development"
+      />
       {/* 1. Hero Content/Image Section */}
       <HeroSection />
 

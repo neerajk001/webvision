@@ -9,7 +9,7 @@ const Aboutus = () => {
   const cardText =
     'We provide our clients with the exact tailor-made software solutions that will meet their specific business requirements. Our team of experienced and technical software developers will integrate application development with your line of business.';
 
-  const extraInfo = 
+  const extraInfo =
     'Beyond development, we focus on scalability and security, ensuring your digital assets grow alongside your business. Our methodology involves deep technical audits and performance optimization to guarantee search engine visibility and user retention.';
 
   // Animation Variants
@@ -24,9 +24,9 @@ const Aboutus = () => {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50 -z-10 skew-x-12 translate-x-20 hidden md:block" />
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-        
+
         {/* --- Left: Image with Floating Badge --- */}
-        <motion.div 
+        <motion.div
           className="flex-1 relative group"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -37,6 +37,7 @@ const Aboutus = () => {
             <motion.img
               src="/hero.png"
               alt="About WebVision"
+              loading="lazy"
               className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
             />
             {/* Overlay Gradient */}
@@ -44,7 +45,7 @@ const Aboutus = () => {
           </div>
 
           {/* Floating Experience Badge */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -bottom-6 -right-6 md:right-4 bg-blue-600 text-white p-6 rounded-2xl shadow-xl z-20 flex items-center gap-4"
@@ -107,7 +108,7 @@ const Aboutus = () => {
 
           {/* --- Buttons --- */}
           <div className="flex flex-wrap gap-5 pt-4">
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsExpanded(!isExpanded)}
@@ -118,8 +119,8 @@ const Aboutus = () => {
             </motion.button>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link 
-                to="/portfolio" 
+              <Link
+                to="/portfolio"
                 className="flex items-center gap-2 border-2 border-slate-900 text-slate-900 font-bold px-8 py-4 rounded-full hover:bg-slate-900 hover:text-white transition-all shadow-md group"
               >
                 Our Portfolio

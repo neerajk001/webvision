@@ -4,28 +4,28 @@ import { Star, Quote, ArrowRight } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Rajesh Sharma', 
+    name: 'Rajesh Sharma',
     role: 'Business Man | Seller',
     text: "I went to WebVision, and it's completely boomed my sales through the service they provide. I have doubled my income—highly recommended!",
-    avatar: 'https://placehold.co/100x100/E0E7FF/4F46E5?text=RS', 
+    avatar: 'https://placehold.co/100x100/E0E7FF/4F46E5?text=RS',
   },
   {
-    name: 'Priya Verma', 
+    name: 'Priya Verma',
     role: 'Startup Founder',
     text: 'The team delivered a stunning website that perfectly captures our brand. The process was smooth, and the results exceeded our expectations.',
-    avatar: 'https://placehold.co/100x100/FEF2F2/B91C1C?text=PV', 
+    avatar: 'https://placehold.co/100x100/FEF2F2/B91C1C?text=PV',
   },
   {
-    name: 'Arjun Singh', 
+    name: 'Arjun Singh',
     role: 'E-commerce Manager',
     text: 'Our online store has never performed better. The new design is not only beautiful but also incredibly user-friendly, leading to a significant increase in conversions.',
-    avatar: 'https://placehold.co/100x100/D1FAE5/059669?text=AS', 
+    avatar: 'https://placehold.co/100x100/D1FAE5/059669?text=AS',
   },
-   {
-    name: 'Neha Gupta', 
+  {
+    name: 'Neha Gupta',
     role: 'Marketing Director',
     text: 'A truly professional and talented team. They understood our vision from day one and brought it to life with creativity and precision.',
-    avatar: 'https://placehold.co/100x100/FFFBEB/B45309?text=NG', 
+    avatar: 'https://placehold.co/100x100/FFFBEB/B45309?text=NG',
   },
 ];
 
@@ -72,9 +72,9 @@ const Testimonials = () => {
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F8FAFC] to-transparent z-20 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F8FAFC] to-transparent z-20 pointer-events-none" />
 
-        <motion.div 
+        <motion.div
           className="flex gap-8 py-10"
-          animate={{ x: [0, -1600] }} 
+          animate={{ x: [0, -1600] }}
           transition={{
             x: {
               repeat: Infinity,
@@ -97,10 +97,10 @@ const Testimonials = () => {
                   <Quote className="text-blue-600" size={28} />
                 </div>
                 <div className="flex gap-0.5">
-                   {[...Array(5)].map((_, i) => <Star key={i} size={14} className="text-amber-400 fill-current" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} size={14} className="text-amber-400 fill-current" />)}
                 </div>
               </div>
-              
+
               <p className="text-slate-600 italic leading-relaxed text-lg mb-8 h-32 overflow-hidden overflow-y-auto custom-scrollbar">
                 "{testimonial.text}"
               </p>
@@ -111,6 +111,7 @@ const Testimonials = () => {
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
+                    loading="lazy"
                     className="relative w-16 h-16 rounded-2xl object-cover mr-4 border-2 border-white shadow-md"
                   />
                 </div>
@@ -123,22 +124,22 @@ const Testimonials = () => {
           ))}
         </motion.div>
       </div>
-      
+
       {/* --- Modern Call to Action --- */}
-      <motion.div 
+      <motion.div
         className="text-center mt-20 px-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
         <p className="text-slate-500 font-medium">Join 500+ satisfied businesses worldwide.</p>
-        <motion.a 
+        <motion.a
           href='/contact'
           className="mt-8 bg-slate-900 text-white font-black py-4 px-10 rounded-2xl inline-flex items-center gap-3 shadow-2xl hover:bg-blue-600 transition-colors group"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-           Start Your Project <ArrowRight className="group-hover:translate-x-2 transition-transform" size={20}/>
+          Start Your Project <ArrowRight className="group-hover:translate-x-2 transition-transform" size={20} />
         </motion.a>
       </motion.div>
 

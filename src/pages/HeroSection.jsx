@@ -1,16 +1,65 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../components/SEO";
 
 /* ===================== DATA ===================== */
 const slideData = [
-  { id: 1, text: "Software Development", description: "Tailor-made solutions for complex business challenges.", pageUrl: "/servicesPages/SoftDevPage", imgUrl: "/serv.png" },
-  { id: 2, text: "Website Design", description: "Responsive and high-performance websites that convert.", pageUrl: "/servicesPages/WebDevPage", imgUrl: "/images/websitehm.png" },
-  { id: 3, text: "Mobile Apps", description: "Next-gen iOS and Android applications for your users.", pageUrl: "/servicesPages/appDev", imgUrl: "/images/app_analytics_dashboard.jpg" },
-  { id: 4, text: "IT Consulting", description: "Strategic technology planning to scale your enterprise.", pageUrl: "/servicesPages/OutConsultPage", imgUrl: "/hero.png" },
-  { id: 5, text: "Business Infrastructure", description: "Secure and scalable server environments for IT growth.", pageUrl: "/servicesPages/ITBusinessPage", imgUrl: "/images/itserver.png" },
-  { id: 6, text: "CRM Systems", description: "Manage customer relationships with integrated data tools.", pageUrl: "/servicesPages/ERPCrmPage", imgUrl: "/images/seomastering.png" },
-  { id: 7, text: "Digital Services", description: "End-to-end digital transformation and support.", pageUrl: "/service", imgUrl: "/images/headseoWix.avif" },
-  { id: 8, text: "Expert FAQ", description: "Answers to your most critical technology questions.", pageUrl: "/about", imgUrl: "/images/FAQ.png" },
+  {
+    id: 1,
+    text: "Software Development",
+    description: "Tailor-made solutions for complex business challenges.",
+    pageUrl: "/services/software-development",
+    imgUrl: "/serv.png",
+  },
+  {
+    id: 2,
+    text: "Website Design",
+    description: "Responsive and high-performance websites that convert.",
+    pageUrl: "/services/web-development",
+    imgUrl: "/images/websitehm.png",
+  },
+  {
+    id: 3,
+    text: "Mobile Apps",
+    description: "Next-gen iOS and Android applications for your users.",
+    pageUrl: "/services/app-development",
+    imgUrl: "/images/app_analytics_dashboard.jpg",
+  },
+  {
+    id: 4,
+    text: "IT Consulting",
+    description: "Strategic technology planning to scale your enterprise.",
+    pageUrl: "/services/out-consulting",
+    imgUrl: "/hero.png",
+  },
+  {
+    id: 5,
+    text: "Business Infrastructure",
+    description: "Secure and scalable server environments for IT growth.",
+    pageUrl: "/services/it-business",
+    imgUrl: "/images/itserver.png",
+  },
+  {
+    id: 6,
+    text: "CRM Systems",
+    description: "Manage customer relationships with integrated data tools.",
+    pageUrl: "/services/erp-crm",
+    imgUrl: "/images/seomastering.png",
+  },
+  {
+    id: 7,
+    text: "Digital Services",
+    description: "End-to-end digital transformation and support.",
+    pageUrl: "/services",
+    imgUrl: "/images/headseoWix.avif",
+  },
+  {
+    id: 8,
+    text: "Expert FAQ",
+    description: "Answers to your most critical technology questions.",
+    pageUrl: "/about",
+    imgUrl: "/images/FAQ.png",
+  },
 ];
 
 /* ===================== ANIMATION VARIANTS ===================== */
@@ -33,8 +82,21 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-black">
-      
+    <section
+      className="
+        overflow-hidden
+        w-full h-[400px]
+        bg-black
+        relative
+        md:h-[500px]
+      "
+    >
+      <SEO
+        title="Home"
+        description="Webvision Infotech - Software, Web and App development, SEO and digital services."
+        url="/"
+      />
+
       {/* 📸 Background Image Slider */}
       <AnimatePresence initial={false}>
         <motion.div
@@ -44,38 +106,85 @@ const HeroSection = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
           style={{ backgroundImage: `url(${slideData[currentIndex].imgUrl})` }}
+          className="
+            w-full h-full
+            bg-cover bg-center
+            absolute inset-0
+          "
         >
           {/* Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-black/40" />
+          <div
+            className="
+              bg-black/40
+              absolute inset-0
+            "
+          />
         </motion.div>
       </AnimatePresence>
 
       {/* 📄 Content Overlay */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
+      <div
+        className="
+          z-20 flex flex-col
+          h-full
+          px-6
+          text-center
+          relative items-center justify-center
+        "
+      >
         <motion.div
           key={`text-${currentIndex}`}
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="max-w-4xl"
+          className="
+            max-w-4xl
+          "
         >
-          <h2 className="text-white font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
+          <h2
+            className="
+              mb-4
+              text-white font-bold tracking-widest text-sm
+              uppercase
+              md:text-base
+            "
+          >
             WELCOME TO WEBVISION SOFTECH PVT LTD.
           </h2>
-          <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6">
+          <h1
+            className="
+              mb-6
+              text-4xl font-extrabold text-white
+              md:text-7xl
+            "
+          >
             {slideData[currentIndex].text}
           </h1>
-          <p className="text-gray-200 text-lg md:text-2xl mb-8">
+          <p
+            className="
+              mb-8
+              text-gray-200 text-lg
+              md:text-2xl
+            "
+          >
             {slideData[currentIndex].description}
           </p>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => (window.location.href = slideData[currentIndex].pageUrl)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg transition shadow-lg"
+            onClick={() =>
+              (window.location.href = slideData[currentIndex].pageUrl)
+            }
+            className="
+              px-10 py-4
+              text-white font-bold text-lg
+              bg-blue-500
+              rounded-full
+              shadow-lg
+              hover:bg-blue-600 transition
+            "
           >
             Explore Service
           </motion.button>
@@ -83,20 +192,35 @@ const HeroSection = () => {
       </div>
 
       {/* 🔘 Navigation Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      <div
+        className="
+          z-30 flex
+          absolute bottom-10 left-1/2 -translate-x-1/2 gap-3
+        "
+      >
         {slideData.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-2 transition-all duration-300 rounded-full ${
-              index === currentIndex ? "w-10 bg-blue-500" : "w-2 bg-white/50"
-            }`}
+            className={`
+              h-2
+              rounded-full
+              transition-all
+              duration-300
+              ${index === currentIndex ? "w-10 bg-blue-500" : "w-2 bg-white/50"}
+            `}
           />
         ))}
       </div>
 
       {/* 🌊 Floating Bubbles (Repurposed for foreground effect) */}
-      <div className="absolute inset-0 pointer-events-none z-10 opacity-30">
+      <div
+        className="
+          z-10
+          pointer-events-none opacity-30
+          absolute inset-0
+        "
+      >
         <BubbleBackground />
       </div>
     </section>
@@ -108,11 +232,15 @@ const HeroSection = () => {
 const BubbleBackground = () => {
   const BUBBLE_COLORS = ["#3b82f6", "#db2777", "#7c3aed", "#10b981", "#f59e0b"];
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div
+      className="
+        overflow-hidden
+        absolute inset-0
+      "
+    >
       {[...Array(15)].map((_, i) => (
         <motion.span
           key={i}
-          className="absolute bottom-0 rounded-full blur-xl"
           style={{
             width: `${20 + Math.random() * 80}px`,
             height: `${20 + Math.random() * 80}px`,
@@ -128,6 +256,10 @@ const BubbleBackground = () => {
             repeat: Infinity,
             delay: Math.random() * 5,
           }}
+          className="
+            rounded-full
+            absolute bottom-0 blur-xl
+          "
         />
       ))}
     </div>

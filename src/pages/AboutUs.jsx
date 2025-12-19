@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Aboutus from '../components/About';
 import TeamSection from '../components/TeamSection';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 // --- Helper Components: Icons ---
 const ArrowRightIcon = () => (
@@ -43,13 +44,19 @@ const cardVariants = {
 const techs = ["Node.js", "PHP", "Angular", "Perl", "HTML5", "Python"];
 
 const AboutUs = () => (
-    <div
+    <main
         className="
       bg-gradient-to-br from-[#f5faff] via-white to-[#f5faff]
       text-gray-800 min-h-screen py-14 px-4 md:px-24
       flex flex-col justify-center
     "
     >
+        <SEO
+            title="About Us"
+            description="Learn about Webvision Infotech — One Stop IT Solution for web and windows applications."
+            url="/about"
+            image="/public/images/native-banner.avif"
+        />
         {/* New Hero Section */}
         <motion.section
             className="w-full mx-auto py-16"
@@ -85,7 +92,7 @@ const AboutUs = () => (
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                           <Link to="/contact"> Get Started </Link>
+                            <Link to="/contact"> Get Started </Link>
                             <ArrowRightIcon />
                         </motion.button>
                         <motion.button
@@ -93,7 +100,7 @@ const AboutUs = () => (
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                           <Link to="/service"> Our Services </Link>
+                            <Link to="/service"> Our Services </Link>
                         </motion.button>
                     </motion.div>
                 </div>
@@ -106,8 +113,9 @@ const AboutUs = () => (
                     <img
                         src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
                         alt="Modern office setup with multiple screens"
+                        loading="lazy"
                         className="w-full h-auto rounded-2xl shadow-2xl"
-                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x600/e0e7ff/4338ca?text=About+Us'; }}
+                        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x600/e0e7ff/4338ca?text=About+Us'; }}
                     />
                 </motion.div>
             </div>
@@ -134,14 +142,15 @@ const AboutUs = () => (
                     <img
                         src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.toLowerCase().replace('.', '')}/${tech.toLowerCase().replace('.', '')}-original.svg`}
                         alt={tech}
+                        loading="lazy"
                         className="h-8 md:h-10 object-contain"
-                        onError={(e) => { e.target.onerror = null; e.target.src=`https://via.placeholder.com/90x40?text=${encodeURIComponent(tech)}`}}
+                        onError={(e) => { e.target.onerror = null; e.target.src = `https://via.placeholder.com/90x40?text=${encodeURIComponent(tech)}` }}
                     />
                 </motion.div>
             ))}
         </motion.div>
 
-         
+
 
         {/* Cards Section */}
         <motion.div
@@ -185,7 +194,7 @@ const AboutUs = () => (
         </motion.div>
         <div className='mt-16'> <Aboutus /></div>
         <div className='mt-16'> <TeamSection /> </div>
-    </div>
+    </main>
 );
 
 export default function App() {

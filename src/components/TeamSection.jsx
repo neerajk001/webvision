@@ -5,7 +5,7 @@ import { User, Briefcase, Award, Zap, Phone, Mail } from 'lucide-react';
 // --- Updated Team Member Data (More members added) ---
 // We use 6 members so the animation loop is noticeable.
 const teamMembers = [
-    
+
     {
         name: 'sachin singh',
         role: 'PHP & mobile developer ',
@@ -20,6 +20,14 @@ const teamMembers = [
         avatar: 'https://placehold.co/128x128/D1FAE5/059669?text=NK',
         primaryColor: 'text-green-600',
     },
+    {
+        name: 'Simple Yadav',
+        role: 'Project Manager',
+        experience: '6+ Years Experience',
+        avatar: 'https://placehold.co/128x128/D1FAE5/059769?text=SY',
+        primaryColor: 'text-green-600',
+    },
+
     {
         name: 'Binod Yadav',
         role: 'CEO & founder',
@@ -43,7 +51,7 @@ const teamMembers = [
 ];
 
 // To create a seamless, looping marquee effect, we duplicate the list.
-const duplicatedMembers = [...teamMembers, ...teamMembers]; 
+const duplicatedMembers = [...teamMembers, ...teamMembers];
 
 // --- Framer Motion Animation Logic ---
 
@@ -51,11 +59,11 @@ const duplicatedMembers = [...teamMembers, ...teamMembers];
 // and use that distance to calculate the translateX needed for one full cycle.
 
 // Total number of cards to scroll in one direction (6 in this case)
-const CARD_COUNT = teamMembers.length; 
+const CARD_COUNT = teamMembers.length;
 // Assuming card width is 300px and gap is 24px (gap-6) => 324px total per card
-const CARD_WIDTH_PLUS_GAP = 324; 
+const CARD_WIDTH_PLUS_GAP = 324;
 // Total distance to move for one full cycle: 6 members * 324px
-const TOTAL_SCROLL_DISTANCE = CARD_COUNT * CARD_WIDTH_PLUS_GAP; 
+const TOTAL_SCROLL_DISTANCE = CARD_COUNT * CARD_WIDTH_PLUS_GAP;
 
 const marqueeVariants = {
     // Phase 1: Scroll Right to Left
@@ -81,9 +89,9 @@ const TeamSection = () => {
 
     return (
         <section className="bg-gray-50 font-sans py-20 sm:py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden"> 
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
                 {/* Section Header */}
-                <motion.div 
+                <motion.div
                     className="text-center mb-16"
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +108,7 @@ const TeamSection = () => {
 
                 {/* --- Auto-Scrolling Marquee Container --- */}
                 <div className="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_white_200px,_white_calc(100%-200px),transparent_100%)]">
-                    
+
                     <motion.div
                         className="flex gap-6 w-max" // w-max ensures the container is wide enough for all duplicated cards
                         variants={marqueeVariants}
@@ -120,21 +128,22 @@ const TeamSection = () => {
                                     <img
                                         src={member.avatar}
                                         alt={`${member.name}'s avatar`}
+                                        loading="lazy"
                                         className="w-32 h-32 rounded-full object-cover border-4 border-gray-100 shadow-md mx-auto"
-                                        onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/128x128/cccccc/ffffff?text=User'; }}
+                                        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/128x128/cccccc/ffffff?text=User'; }}
                                     />
                                     <span className="absolute bottom-1 right-1 bg-green-500 w-5 h-5 rounded-full border-3 border-white shadow-md transform translate-x-1"></span>
                                 </div>
 
                                 {/* Member Info */}
                                 <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                                
+
                                 {/* Role */}
                                 <div className="flex items-center justify-center mt-2 font-semibold">
                                     <Briefcase size={16} className={`mr-2 ${member.primaryColor}`} />
                                     <p className={`${member.primaryColor}`}>{member.role}</p>
                                 </div>
-                                
+
                                 {/* Experience */}
                                 <div className="flex items-center justify-center mt-2 text-gray-500 text-sm">
                                     <Award size={16} className="mr-2 text-yellow-500" />

@@ -54,11 +54,11 @@ const ChatWindow = ({ onClose }) => {
 
     // VITAL FUNCTION: Opens Gmail URL in a new tab with pre-filled data.
     const handleSendMail = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         // 1. Define subject and email content (correct variable order)
         const subject = encodeURIComponent(`Query from ${formState.name} via Chatbot`);
-        
+
         const emailBody = `
 Hello Web Vision Softech Team,
 
@@ -68,15 +68,15 @@ My contact email is ${formState.email}.
 My query is:
 ${formState.query}
         `.trim();
-        
+
         const encodedBody = encodeURIComponent(emailBody);
-        
+
         // 2. Construct the final Gmail URL for webmail opening
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${COMPANY_EMAIL}&cc=${SECONDARY_EMAIL}&su=${subject}&body=${encodedBody}`;
-        
+
         // 3. Open the Gmail URL in a new tab
         window.open(gmailUrl, '_blank');
-        
+
         // 4. Clean up state in the chatbot
         setFormState({ name: '', email: '', query: '' });
         setStep(CHAT_STEPS.OPTIONS); // Transition back to the options menu
@@ -183,7 +183,7 @@ ${formState.query}
                         </BotMessage>
                         <div className="bg-white p-3 rounded-lg shadow-md text-sm">
                             <p className="font-semibold text-gray-800">{ADDRESS}</p>
-                            <a 
+                            <a
                                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -249,7 +249,7 @@ ${formState.query}
                     {renderChatContent()}
                 </AnimatePresence>
             </div>
-            
+
             {/* Footer */}
             <div className="p-3 border-t bg-gray-50 text-center text-xs text-gray-500">
                 Powered by Web Vision Softech
@@ -284,16 +284,7 @@ const ChatbotSystem = () => {
                 {isOpen && <ChatWindow onClose={() => setIsOpen(false)} />}
             </AnimatePresence>
 
-            {/* Optional: Global style for scrollbar hide/customization */}
-            <style jsx global>{`
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
-                }
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background-color: #ccc;
-                    border-radius: 3px;
-                }
-            `}</style>
+
         </>
     );
 };

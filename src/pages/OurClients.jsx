@@ -1,5 +1,6 @@
 import React from 'react'; // Removed useState since it's no longer needed
 import { motion } from 'framer-motion'; // Removed AnimatePresence
+import SEO from '../components/SEO';
 
 // --- Client Data ---
 const clients = [
@@ -37,7 +38,7 @@ const ClientCard = ({ client }) => {
                 visible: { opacity: 1, y: 0 }
             }}
         >
-            <img src={client.logo} alt={`${client.name} logo`} className="max-h-20 w-auto object-contain" />
+            <img src={client.logo} alt={`${client.name} logo`} loading="lazy" className="max-h-20 w-auto object-contain" />
         </motion.div>
     );
 };
@@ -91,7 +92,8 @@ const OurClients = () => {
     };
 
     return (
-        <div className="bg-gray-100 min-h-screen py-16 md:py-24">
+        <main className="bg-gray-100 min-h-screen py-16 md:py-24">
+            <SEO title="Clients" description="Trusted clients of Webvision Infotech across industries." url="/clients" />
             <div className="container mx-auto px-6">
                 {/* Header */}
                 <motion.div
@@ -124,7 +126,7 @@ const OurClients = () => {
                 {/* Call to Action Section */}
                 <ClientCallToAction />
             </div>
-        </div>
+        </main>
     );
 };
 

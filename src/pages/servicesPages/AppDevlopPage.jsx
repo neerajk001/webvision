@@ -19,6 +19,7 @@ import {
   Mail,
   Globe,
 } from "lucide-react";
+import SEO from "../../components/SEO";
 
 // --- Styling & Config ---
 // Accent Color: Deep Blue (#3B82F6)
@@ -89,32 +90,32 @@ const ImageMosaicSection = () => (
     viewport={{ once: true, amount: 0.2 }}
     variants={containerVariants}
     className="
-        flex
-        py-16 px-4
-        bg-white
-        justify-center
-        sm:px-10
-      "
+      flex
+      py-16 px-4
+      bg-white
+      justify-center
+      sm:px-10
+    "
   >
     {/* Outer Container: 90% width */}
     <div
       className="
-            w-[60%] max-w-5xl
-            mx-auto
-          "
+        w-[60%] max-w-5xl
+        mx-auto
+      "
     >
       <motion.h2
         variants={itemVariants}
         className="
-                mb-8
-                text-3xl font-extrabold text-[#1F2937] text-center
-              "
+          mb-8
+          text-3xl font-extrabold text-[#1F2937] text-center
+        "
       >
         Our Apps{" "}
         <span
           className="
-                    text-[#3B82F6]
-                  "
+            text-[#3B82F6]
+          "
         >
           Developments
         </span>
@@ -123,52 +124,54 @@ const ImageMosaicSection = () => (
       <motion.div
         variants={containerVariants}
         className="
-                space-y-4
-              "
+          space-y-4
+        "
       >
         {/* Row 1: Left 40%, Right 60% */}
         <div
           className="
-                    flex
-                    gap-4
-                  "
+            flex
+            gap-4
+          "
         >
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
             className="
-                        w-[40%]
-                      "
+                w-[40%]
+              "
           >
             <img
               src="/images/app_design_small.jpg"
               alt="Mobile UI Design Mockup"
+              loading="lazy"
               className="
-                            object-cover
-                            w-full h-full
-                            rounded-xl
-                            shadow-lg
-                            aspect-[16/9]
-                          "
+                object-cover
+                w-full h-full
+                rounded-xl
+                shadow-lg
+                aspect-[16/9]
+              "
             />
           </motion.div>
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
             className="
-                        w-[60%]
-                      "
+              w-[60%]
+            "
           >
             <img
               src="/images/app_development_code.jpg"
               alt="Code on screen for app development"
+              loading="lazy"
               className="
-                            object-cover
-                            w-full h-full
-                            rounded-xl
-                            shadow-lg
-                            aspect-[16/9]
-                          "
+                object-cover
+                w-full h-full
+                rounded-xl
+                shadow-lg
+                aspect-[16/9]
+              "
             />
           </motion.div>
         </div>
@@ -176,46 +179,48 @@ const ImageMosaicSection = () => (
         {/* Row 2: Left 60%, Right 40% */}
         <div
           className="
-                    flex
-                    gap-4
-                  "
+            flex
+            gap-4
+          "
         >
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
             className="
-                        w-[60%]
-                      "
+              w-[60%]
+            "
           >
             <img
               src="/images/app_analytics_dashboard.jpg"
               alt="App performance analytics dashboard"
+              loading="lazy"
               className="
-                            object-cover
-                            w-full h-full
-                            rounded-xl
-                            shadow-lg
-                            aspect-[16/9]
-                          "
+                object-cover
+                w-full h-full
+                rounded-xl
+                shadow-lg
+                aspect-[16/9]
+              "
             />
           </motion.div>
           <motion.div
             variants={itemVariants}
             whileHover={{ scale: 1.03 }}
             className="
-                        w-[40%]
-                      "
+              w-[40%]
+            "
           >
             <img
               src="/images/app_launch_phone.jpg"
               alt="Hand holding phone with a launched app"
+              loading="lazy"
               className="
-                            object-cover
-                            w-full h-full
-                            rounded-xl
-                            shadow-lg
-                            aspect-[16/9]
-                          "
+                object-cover
+                w-full h-full
+                rounded-xl
+                shadow-lg
+                aspect-[16/9]
+              "
             />
           </motion.div>
         </div>
@@ -233,54 +238,54 @@ const HeroSection = () => (
     animate="visible"
     variants={containerVariants}
     className="
-        py-20 px-4
-        bg-white
-        sm:px-10
-      "
+      py-20 px-4
+      bg-white
+      sm:px-10
+    "
   >
     <div
       className="
-            grid grid-cols-1
-            max-w-7xl
-            mx-auto
-            gap-12 items-center
-            md:grid-cols-2
-          "
+        grid grid-cols-1
+        max-w-7xl
+        mx-auto
+        gap-12 items-center
+        md:grid-cols-2
+      "
     >
       {/* Left Part: Text and Heading (App Dev Focus) */}
       <motion.div
         variants={itemVariants}
         className="
-                space-y-4
-              "
+          space-y-4
+        "
       >
         <h2
           className="
-                    text-sm font-semibold tracking-widest text-gray-500
-                    uppercase
-                  "
+            text-sm font-semibold tracking-widest text-gray-500
+            uppercase
+          "
         >
           Your Digital Product Vision
         </h2>
         <h1
           className="
-                    text-4xl font-extrabold leading-tight text-[#1F2937]
-                    md:text-5xl
-                  "
+            text-4xl font-extrabold leading-tight text-[#1F2937]
+            md:text-5xl
+          "
         >
           Building Mobile Apps: From{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             Idea to App Store
           </span>
         </h1>
         <p
           className="
-                    text-lg text-gray-600
-                  "
+            text-lg text-gray-600
+          "
         >
           We specialize in high-performance cross-platform mobile development
           using Flutter and React Native, ensuring native-like speed and a
@@ -294,13 +299,13 @@ const HeroSection = () => (
           }}
           whileTap={{ scale: 0.95 }}
           className="
-                    inline-block
-                    mt-4 px-6 py-3
-                    text-white font-semibold
-                    bg-[#3B82F6]
-                    rounded-lg
-                    shadow-md
-                  "
+            inline-block
+            mt-4 px-6 py-3
+            text-white font-semibold
+            bg-[#3B82F6]
+            rounded-lg
+            shadow-md
+          "
         >
           View Core Services
         </motion.a>
@@ -312,25 +317,26 @@ const HeroSection = () => (
         whileHover={{ scale: 1.02, rotate: 0.5 }}
         transition={{ type: "spring", stiffness: 300 }}
         className="
-                flex
-                justify-center
-              "
+          flex
+          justify-center
+        "
       >
         <div
           className="
-                    flex
-                    w-full max-w-lg h-full
-                    items-center justify-center
-                  "
+            flex
+            w-full max-w-lg h-full
+            items-center justify-center
+          "
         >
           <img
             src="/images/appdevelopment.png"
             alt="Mobile app development illustration showing iOS and Android screens"
+            loading="lazy"
             className="
-                        w-full h-full
-                        rounded-xl border-0 border-[#3B82F6]
-                        shadow-2xl
-                      "
+              w-full h-full
+              rounded-xl border-0 border-[#3B82F6]
+              shadow-2xl
+            "
           />
         </div>
       </motion.div>
@@ -348,19 +354,19 @@ const TechStackSection = () => (
     viewport={{ once: true, amount: 0.4 }}
     variants={containerVariants}
     className="
-        py-20 px-4
-        bg-gray-50
-        sm:px-10
-      "
+      py-20 px-4
+      bg-gray-50
+      sm:px-10
+    "
   >
     <div
       className="
-            grid grid-cols-1
-            max-w-7xl
-            mx-auto
-            gap-12 items-center
-            md:grid-cols-2
-          "
+        grid grid-cols-1
+        max-w-7xl
+        mx-auto
+        gap-12 items-center
+        md:grid-cols-2
+      "
     >
       {/* Left Part: Image  */}
       <motion.div
@@ -368,19 +374,20 @@ const TechStackSection = () => (
         whileHover={{ scale: 1.02, rotate: -0.8 }}
         transition={{ type: "spring", stiffness: 300 }}
         className="
-                flex order-2
-                justify-center
-                md:order-1
-              "
+          flex order-2
+          justify-center
+          md:order-1
+        "
       >
         <img
           src="/images/techstack.png"
           alt="Flutter and React Native frameworks"
+          loading="lazy"
           className="
-                    w-full
-                    rounded-xl border-0 border-[]
-                    shadow-2xl
-                  "
+            w-full
+            rounded-xl border-0 border-[]
+            shadow-2xl
+          "
         />
       </motion.div>
 
@@ -388,29 +395,29 @@ const TechStackSection = () => (
       <motion.div
         variants={itemVariants}
         className="
-                order-1
-                space-y-4
-                md:order-2
-              "
+          order-1
+          space-y-4
+          md:order-2
+        "
       >
         <h3
           className="
-                    text-4xl font-extrabold text-[#1F2937]
-                  "
+            text-4xl font-extrabold text-[#1F2937]
+          "
         >
           Cross-Platform Mastery:{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             Flutter & React Native
           </span>
         </h3>
         <p
           className="
-                    text-lg text-gray-600
-                  "
+            text-lg text-gray-600
+          "
         >
           Choosing the right technology is crucial. We leverage **React Native**
           and **Flutter** to build powerful, single-codebase applications,
@@ -418,10 +425,10 @@ const TechStackSection = () => (
         </p>
         <ul
           className="
-                    space-y-2 pl-4
-                    text-lg text-gray-600
-                    list-disc list-inside
-                  "
+            space-y-2 pl-4
+            text-lg text-gray-600
+            list-disc list-inside
+          "
         >
           <li>**Speed:** Faster time-to-market with code reusability.</li>
           <li>**Performance:** Near-native performance and seamless UX.</li>
@@ -447,35 +454,35 @@ const PillarCard = ({ icon: Icon, title, description }) => (
     }}
     transition={{ type: "spring", stiffness: 300 }}
     className="
-        flex flex-col
-        h-full
-        p-6
-        text-center
-        bg-white
-        rounded-xl border border-gray-100
-        shadow-lg
-        items-center
-      "
+      flex flex-col
+      h-full
+      p-6
+      text-center
+      bg-white
+      rounded-xl border border-gray-100
+      shadow-lg
+      items-center
+    "
   >
     <Icon
       className="
-            w-10 h-10
-            mb-3
-            text-[#3B82F6]
-          "
+        w-10 h-10
+        mb-3
+        text-[#3B82F6]
+      "
     />
     <h4
       className="
-            mb-2
-            text-xl font-bold text-[#1F2937]
-          "
+        mb-2
+        text-xl font-bold text-[#1F2937]
+      "
     >
       {title}
     </h4>
     <p
       className="
-            text-sm text-gray-500
-          "
+        text-sm text-gray-500
+      "
     >
       {description}
     </p>
@@ -542,29 +549,29 @@ const CardGridSection = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
       className="
-            py-20 px-4
-            bg-white
-            sm:px-10
-          "
+        py-20 px-4
+        bg-white
+        sm:px-10
+      "
     >
       <div
         className="
-                max-w-7xl
-                mx-auto
-              "
+          max-w-7xl
+          mx-auto
+        "
       >
         <motion.h2
           variants={itemVariants}
           className="
-                    mb-12
-                    text-4xl font-extrabold text-[#1F2937] text-center
-                  "
+            mb-12
+            text-4xl font-extrabold text-[#1F2937] text-center
+          "
         >
           Our{" "}
           <span
             className="
-                        text-[#3B82F6]
-                      "
+              text-[#3B82F6]
+            "
           >
             Core App Development Services
           </span>
@@ -573,11 +580,11 @@ const CardGridSection = () => {
         <motion.div
           variants={containerVariants}
           className="
-                    grid grid-cols-1
-                    gap-8
-                    sm:grid-cols-2
-                    lg:grid-cols-4
-                  "
+            grid grid-cols-1
+            gap-8
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
         >
           {coreServices.map((pillar, index) => (
             <PillarCard key={index} {...pillar} />
@@ -598,39 +605,39 @@ const PricingSection = () => (
     viewport={{ once: true, amount: 0.2 }}
     variants={containerVariants}
     className="
-        py-24 px-4
-        bg-gray-50
-        sm:px-10
-      "
+      py-24 px-4
+      bg-gray-50
+      sm:px-10
+    "
   >
     <div
       className="
-            max-w-7xl
-            mx-auto
-          "
+        max-w-7xl
+        mx-auto
+      "
     >
       <h2
         className="
-                mb-4
-                text-4xl font-extrabold text-[#1F2937] text-center
-                md:text-5xl
-              "
+          mb-4
+          text-4xl font-extrabold text-[#1F2937] text-center
+          md:text-5xl
+        "
       >
         Transparent{" "}
         <span
           className="
-                    text-[#3B82F6]
-                  "
+            text-[#3B82F6]
+          "
         >
           Development Packages
         </span>
       </h2>
       <p
         className="
-                max-w-3xl
-                mb-16 mx-auto
-                text-xl text-gray-500 text-center
-              "
+          max-w-3xl
+          mb-16 mx-auto
+          text-xl text-gray-500 text-center
+        "
       >
         Pricing varies based on complexity, feature set, and maintenance
         requirements. All quotes are upfront and fixed scope.
@@ -639,10 +646,10 @@ const PricingSection = () => (
       <motion.div
         variants={containerVariants}
         className="
-                grid grid-cols-1
-                gap-8
-                md:grid-cols-3
-              "
+          grid grid-cols-1
+          gap-8
+          md:grid-cols-3
+        "
       >
         {pricingPlans.map((plan, index) => (
           <motion.div
@@ -654,42 +661,42 @@ const PricingSection = () => (
               boxShadow: `0px 15px 30px ${plan.shadow.split("/")[0].split("-")[1]}/80`,
             }}
             className={`
-                        flex flex-col
-                        p-8
-                        bg-white
-                        rounded-xl border-t-8 border-b-8
-                        shadow-xl
-                        transition duration-300
-                        ${plan.accent.replace("text", "border")}
-                        ${plan.shadow}
-                      `}
+              flex flex-col
+              p-8
+              bg-white
+              rounded-xl border-t-8 border-b-8
+              shadow-xl
+              transition duration-300
+              ${plan.accent.replace("text", "border")}
+              ${plan.shadow}
+            `}
           >
             {/* Header */}
             <div
               className="
-                            mb-6
-                            text-center
-                          "
+                mb-6
+                text-center
+              "
             >
               <plan.icon
                 className={`
-                                w-12 h-12
-                                mx-auto mb-3
-                                ${plan.accent}
-                              `}
+                  w-12 h-12
+                  mx-auto mb-3
+                  ${plan.accent}
+                `}
               />
               <h3
                 className="
-                                text-3xl font-bold text-[#1F2937]
-                              "
+                  text-3xl font-bold text-[#1F2937]
+                "
               >
                 {plan.title}
               </h3>
               <p
                 className="
-                                mt-1
-                                text-sm text-gray-500
-                              "
+                  mt-1
+                  text-sm text-gray-500
+                "
               >
                 {plan.subtitle}
               </p>
@@ -698,15 +705,15 @@ const PricingSection = () => (
             {/* Price */}
             <div
               className="
-                            mb-8 pb-4
-                            text-center
-                            border-b
-                          "
+                mb-8 pb-4
+                text-center
+                border-b
+              "
             >
               <p
                 className="
-                                text-sm text-gray-500
-                              "
+                  text-sm text-gray-500
+                "
               >
                 starting investment
               </p>
@@ -715,26 +722,26 @@ const PricingSection = () => (
             {/* Features List */}
             <ul
               className="
-                            flex-grow
-                            space-y-3
-                          "
+                flex-grow
+                space-y-3
+              "
             >
               {plan.features.map((feature, i) => (
                 <li
                   key={i}
                   className="
-                                    flex
-                                    text-gray-700
-                                    items-start
-                                  "
+                    flex
+                    text-gray-700
+                    items-start
+                  "
                 >
                   <Check
                     className={`
-                                        flex-shrink-0
-                                        w-5 h-5
-                                        mr-3
-                                        text-[#3B82F6]
-                                      `}
+                      flex-shrink-0
+                      w-5 h-5
+                      mr-3
+                      text-[#3B82F6]
+                    `}
                   />
                   <span>{feature}</span>
                 </li>
@@ -744,21 +751,21 @@ const PricingSection = () => (
             {/* CTA Button */}
             <div
               className="
-                            mt-8
-                          "
+                mt-8
+              "
             >
               <a
                 href="/contact"
                 className={`
-                                block
-                                w-full
-                                py-3
-                                text-center font-semibold text-white
-                                bg-[#3B82F6]
-                                rounded-lg
-                                shadow-md
-                                transition duration-300 hover:bg-blue-600
-                              `}
+                  block
+                  w-full
+                  py-3
+                  text-center font-semibold text-white
+                  bg-[#3B82F6]
+                  rounded-lg
+                  shadow-md
+                  transition duration-300 hover:bg-blue-600
+                `}
               >
                 Start Discovery Call
               </a>
@@ -776,35 +783,35 @@ const PricingSection = () => (
 const ContactSection = () => (
   <section
     className="
-        py-20 px-4
-        bg-white
-        border-t border-gray-200
-        sm:px-10
-      "
+      py-20 px-4
+      bg-white
+      border-t border-gray-200
+      sm:px-10
+    "
   >
     <div
       className="
-            max-w-3xl
-            mx-auto p-10
-            text-center
-            bg-gray-50
-            rounded-xl
-            shadow-2xl
-          "
+        max-w-3xl
+        mx-auto p-10
+        text-center
+        bg-gray-50
+        rounded-xl
+        shadow-2xl
+      "
     >
       <h2
         className="
-                mb-4
-                text-3xl font-bold text-[#1F2937]
-              "
+          mb-4
+          text-3xl font-bold text-[#1F2937]
+        "
       >
         Ready to Build Your App?
       </h2>
       <p
         className="
-                mb-6
-                text-lg text-gray-600
-              "
+          mb-6
+          text-lg text-gray-600
+        "
       >
         Let's discuss your project's scope, technology stack, and timeline. Get
         a free consultation today.
@@ -822,11 +829,16 @@ const AppDevlopPage = () => {
   return (
     <div
       className="
-            min-h-screen
-            text-[#1F2937] font-sans
-            bg-white
-          "
+        min-h-screen
+        text-[#1F2937] font-sans
+        bg-white
+      "
     >
+      <SEO
+        title="App Development"
+        description="Mobile app development services: Flutter, React Native, native apps and app store optimization."
+        url="/services/app-development"
+      />
       {/* 3. NEW: Image Mosaic Section */}
       <ImageMosaicSection />
 

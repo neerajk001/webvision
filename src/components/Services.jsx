@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from "react-router-dom";
-import { 
-  Code, Layout, Cloud, TrendingUp, Settings, PenTool, ArrowRight 
+import {
+    Code, Layout, Cloud, TrendingUp, Settings, PenTool, ArrowRight
 } from 'lucide-react';
 
 // Added Icons to the data for more visual impact
@@ -87,7 +87,7 @@ const Services = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-20"
                 >
-                    <motion.span 
+                    <motion.span
                         className="text-blue-600 font-bold tracking-widest uppercase text-sm"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -124,10 +124,11 @@ const Services = () => {
                                         <img
                                             src={service.imageUrl}
                                             alt={service.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
-                                        
+
                                         {/* Icon Badge */}
                                         <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 text-white shadow-xl">
                                             {service.icon}

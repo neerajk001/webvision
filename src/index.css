@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+/* Custom Scrollbar for Chatbot and other scrollable areas */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}

@@ -16,7 +16,7 @@ export default function InlineContactForm({
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, message } = form;
-    
+
     const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
       targetEmail
@@ -25,11 +25,11 @@ export default function InlineContactForm({
     )}`;
 
     window.open(gmailUrl, "_blank");
-    
+
     // Show success feedback
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 5000);
-    
+
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -81,6 +81,7 @@ export default function InlineContactForm({
               value={form.name}
               onChange={handleChange}
               required
+              aria-label="Full Name"
               placeholder="Full Name"
               className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-gray-400"
             />
@@ -94,6 +95,7 @@ export default function InlineContactForm({
               value={form.email}
               onChange={handleChange}
               required
+              aria-label="Email Address"
               placeholder="Email Address"
               className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-gray-400"
             />
@@ -108,6 +110,7 @@ export default function InlineContactForm({
             onChange={handleChange}
             rows={4}
             required
+            aria-label="Project Details"
             placeholder="Tell us about your project..."
             className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-gray-400 resize-none"
           />

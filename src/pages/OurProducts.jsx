@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight, Smartphone, ShieldCheck, Zap } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const products = [
     {
@@ -30,7 +31,7 @@ const products = [
     {
         title: "Jewelry Management",
         tagline: "Inventory Security",
-        description: "Protect your high-value assets with barcodearticle tracking. Specialized ARTICLE-WISE tracking prevents theft and simplifies stock audits.",
+        description: "Protect your high-value assets with barcode article tracking. Specialized ARTICLE-WISE tracking prevents theft and simplifies stock audits.",
         features: ["Barcode Scanning", "Article Tracking", "Theft Protection"],
         image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=2070&auto=format&fit=crop",
         color: "orange"
@@ -57,27 +58,21 @@ const ProductSection = ({ product, index }) => {
             className="group relative"
         >
             <div className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
-                
-                {/* Visual Section with 3D Float */}
                 <motion.div 
                     className="w-full lg:w-1/2 relative"
                     whileHover={{ scale: 1.02, rotateY: isReversed ? -5 : 5 }}
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 >
-                    {/* Background Glow */}
                     <div className={`absolute -inset-4 bg-${product.color}-500/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
-                    
-                    {/* Image "Frame" */}
                     <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 bg-white p-2">
                         <img
                             src={product.image}
                             alt={product.title}
+                            loading="lazy"
                             className="rounded-xl object-cover w-full h-[300px] md:h-[450px]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
                     </div>
-
-                    {/* Floating Info Tag */}
                     <motion.div 
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -90,7 +85,6 @@ const ProductSection = ({ product, index }) => {
                     </motion.div>
                 </motion.div>
 
-                {/* Content Section */}
                 <div className="w-full lg:w-1/2 space-y-6">
                     <div className="space-y-2">
                         <span className={`text-${product.color}-600 font-bold tracking-[0.2em] uppercase text-xs`}>
@@ -100,11 +94,9 @@ const ProductSection = ({ product, index }) => {
                             {product.title}
                         </h2>
                     </div>
-
                     <p className="text-slate-500 text-lg leading-relaxed">
                         {product.description}
                     </p>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {product.features?.map((feature, i) => (
                             <div key={i} className="flex items-center gap-2 group/feat">
@@ -113,7 +105,6 @@ const ProductSection = ({ product, index }) => {
                             </div>
                         ))}
                     </div>
-
                     <div className="pt-6">
                         <motion.a
                             href="tel:+919322347666"
@@ -133,13 +124,12 @@ const ProductSection = ({ product, index }) => {
 
 const OurProducts = () => {
     return (
-        <div className="bg-[#FCFDFF] min-h-screen relative overflow-hidden">
-            {/* Ambient Background Elements */}
+        <main className="bg-[#FCFDFF] min-h-screen relative overflow-hidden">
+            <SEO title="Products" description="Explore product offerings by Webvision Infotech." url="/products" />
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-[120px] -z-10" />
             <div className="absolute bottom-1/2 left-0 w-[400px] h-[400px] bg-purple-50 rounded-full blur-[120px] -z-10" />
 
             <div className="container mx-auto px-6 py-20 lg:py-32">
-                {/* Hero Header */}
                 <div className="max-w-4xl mx-auto text-center mb-24 lg:mb-40 space-y-6">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -170,18 +160,13 @@ const OurProducts = () => {
                     </motion.p>
                 </div>
 
-                
-
-                {/* Vertical Product Showcase */}
                 <div className="space-y-32 lg:space-y-56">
                     {products.map((product, index) => (
                         <ProductSection key={index} product={product} index={index} />
                     ))}
                 </div>
             </div>
-
-
-        </div>
+        </main>
     );
 };
 
