@@ -122,6 +122,7 @@ const Contact = () => {
                 pt-32 pb-40 px-6
                 bg-slate-900
                 relative
+                overflow-hidden
               "
       >
         <div
@@ -239,7 +240,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="
-                        p-8
+                        p-6
                         bg-white
                         rounded-[2rem] border border-slate-50
                         shadow-[0_20px_60px_-20px_rgba(0,0,0,0.1)]
@@ -426,7 +427,7 @@ const Contact = () => {
             <div
               className="
                             overflow-hidden
-                            h-[450px]
+                            h-[300px] md:h-[450px]
                             rounded-[2rem] border-8 border-white
                             shadow-2xl
                             relative
