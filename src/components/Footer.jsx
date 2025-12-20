@@ -390,7 +390,7 @@ const Footer = () => {
           >
             Engineered with Precision by{" "}
             <a
-              href="https://thunderous-liger-65cb46.netlify.app/"
+              href="https://harshdubeyhrd.netlify.app/"
               className="
                 text-blue-500/80
                 transition-colors
